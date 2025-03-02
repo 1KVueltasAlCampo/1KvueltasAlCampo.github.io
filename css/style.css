@@ -154,3 +154,51 @@ footer {
 .dot:hover {
     background-color: rgba(255, 255, 255, 0.8);
 }
+
+/* Sección de servicios */
+.services {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    margin-top: 40px; /* Espacio entre la galería y los servicios */
+    margin-bottom: 60px; /* Espacio debajo de los servicios */
+}
+
+.service {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.service i {
+    font-size: 3rem;
+    color: #004080;
+    margin-bottom: 15px;
+}
+
+.service h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #004080;
+}
+
+.service p {
+    font-size: 1rem;
+    color: #555;
+}
+

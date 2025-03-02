@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+    .navbar-brand-container {
+        max-width: 100%;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+}

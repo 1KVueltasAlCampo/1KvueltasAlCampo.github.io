@@ -1,60 +1,61 @@
-document.addEventListener("contentLoaded", function (event) {
-    if (event.detail === "cuenta.html") {
-        console.log("Inicializando la página de cuenta");
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Inicializando la página de cuenta");
 
-        const loginForm = document.getElementById("loginForm");
-        const resultDiv = document.getElementById("result");
-        const totalAhorros = document.getElementById("totalAhorros");
-        const capacidadSinDeudor = document.getElementById("capacidadSinDeudor");
-        const capacidadConDeudor = document.getElementById("capacidadConDeudor");
-        const cedulaInput = document.getElementById("cedula");
-        const passwordInput = document.getElementById("password");
+    const loginForm = document.getElementById("loginForm");
+    const resultDiv = document.getElementById("result");
+    const totalAhorros = document.getElementById("totalAhorros");
+    const capacidadSinDeudor = document.getElementById("capacidadSinDeudor");
+    const capacidadConDeudor = document.getElementById("capacidadConDeudor");
+    const cedulaInput = document.getElementById("cedula");
+    const passwordInput = document.getElementById("password");
 
-        if (loginForm) {
-            loginForm.addEventListener("submit", async function (event) {
-                event.preventDefault(); // Evita que el formulario se envíe y recargue la página
+    if (loginForm) {
+        loginForm.addEventListener("submit", async function (event) {
+            event.preventDefault(); // Evita que el formulario se envíe y recargue la página
 
-                // Limpiar los campos del formulario
-                cedulaInput.value = "";
-                passwordInput.value = "";
+            // Obtener los valores ANTES de limpiar los inputs
+            const cedula = cedulaInput.value.trim();
+            const password = passwordInput.value.trim();
 
-                // Ocultar los resultados anteriores
-                resultDiv.classList.add("hidden");
-                totalAhorros.textContent = "";
-                capacidadSinDeudor.textContent = "";
-                capacidadConDeudor.textContent = "";
+            console.log("Cedula:", cedula);
+            console.log("Password:", password);
 
-                const cedula = cedulaInput.value;
-                const password = passwordInput.value;
+            if (!cedula || !password) {
+                alert("Cédula y contraseña son requeridas");
+                return;
+            }
 
-                try {
-                    // Hacer una solicitud al backend
-                    const response = await fetch("https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({ cedula, password })
-                    });
+            try {
+                // Hacer una solicitud al backend
+                const response = await fetch("https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ cedula, password }) // Enviar valores antes de limpiar
+                });
 
-                    const data = await response.json();
+                const data = await response.json();
 
-                    if (response.ok) {
-                        // Mostrar los resultados
-                        totalAhorros.textContent = data.totalAhorros;
-                        capacidadSinDeudor.textContent = data.capacidadSinDeudor;
-                        capacidadConDeudor.textContent = data.capacidadConDeudor;
-                        resultDiv.classList.remove("hidden");
-                    } else {
-                        alert(data.error || "Error al iniciar sesión");
-                    }
-                } catch (error) {
-                    console.error("Error:", error);
-                    alert("Error al conectar con el servidor");
+                if (response.ok) {
+                    // Mostrar los resultados
+                    totalAhorros.textContent = data.totalAhorros;
+                    capacidadSinDeudor.textContent = data.capacidadSinDeudor;
+                    capacidadConDeudor.textContent = data.capacidadConDeudor;
+                    resultDiv.classList.remove("hidden");
+
+                    // Ahora sí limpiar los campos del formulario
+                    cedulaInput.value = "";
+                    passwordInput.value = "";
+                } else {
+                    alert(data.error || "Error al iniciar sesión");
                 }
-            });
-        } else {
-            console.error("El formulario #loginForm no se encontró en el DOM");
-        }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Error al conectar con el servidor");
+            }
+        });
+    } else {
+        console.error("El formulario #loginForm no se encontró en el DOM");
     }
 });

@@ -6,7 +6,6 @@ document.addEventListener("contentLoaded", function (event) {
 
         let slides = document.querySelectorAll(".slide");
         let video = document.getElementById("videoSlide");
-        let interval; // Variable para almacenar el intervalo
 
         if (video) {
             console.log("El video se ha encontrado");
@@ -47,7 +46,6 @@ document.addEventListener("contentLoaded", function (event) {
                 nextIndex = 0;
             }
             showSlide(nextIndex);
-            resetInterval();
         }
 
         function prevSlide() {
@@ -57,13 +55,12 @@ document.addEventListener("contentLoaded", function (event) {
                 prevIndex = slides.length - 1;
             }
             showSlide(prevIndex);
-            resetInterval();
         }
 
         // Función para reiniciar el intervalo automático
         function resetInterval() {
-            clearInterval(interval); // Detiene el intervalo actual
-            interval = setInterval(() => {
+            clearInterval(galleryInterval); // Detiene el intervalo actual
+            galleryInterval = setInterval(() => {
                 // Solo avanza si el slide actual no contiene un video
                 const currentSlide = slides[currentIndex];
                 const currentVideo = currentSlide.querySelector("video");

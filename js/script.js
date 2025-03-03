@@ -1,4 +1,13 @@
+let galleryInterval = null; // Variable global para almacenar el intervalo de la galería
+
 function loadPage(page) {
+    // Pausar la galería si está activa
+    if (galleryInterval) {
+        clearInterval(galleryInterval);
+        galleryInterval = null;
+        console.log("Galería pausada al cargar una nueva página");
+    }
+
     fetch(`pages/${page}`)
         .then(response => response.text())
         .then(html => {

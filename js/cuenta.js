@@ -29,7 +29,7 @@ document.addEventListener("contentLoaded", function (event) {
 
                 try {
                     // Hacer una solicitud al backend
-                    const response = await fetch("https://1-kvueltas-al-campo-github-io-u1xs.vercel.app", {
+                    const response = await fetch("https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"

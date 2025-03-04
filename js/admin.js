@@ -14,7 +14,7 @@ document.addEventListener("contentLoaded", function(event) {
 
                 const username = usernameInput.value.trim();
                 const password = passwordInput.value.trim();
-                const loginAdminUrl = "https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login-admin";
+                const loginAdminUrl = "https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/admin/login-admin";
                 //const loginAdminUrl = "http://localhost:3000/admin/login-admin";
 
                 try {

@@ -12,9 +12,11 @@ document.addEventListener("contentLoaded", function (event) {
 
                 const cedula = cedulaInput.value;
                 const password = passwordInput.value;
+                const url = "https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login";
+                //const url = "http://localhost:3000/login";
 
                 try {
-                    const response = await fetch("https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login", { 
+                    const response = await fetch(url, { 
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"

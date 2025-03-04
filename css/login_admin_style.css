@@ -1,0 +1,53 @@
+/* admin_style.css */
+.login-container, .admin-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-container h1, .admin-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login-container form, .admin-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-container label, .admin-container label {
+    font-size: 16px;
+    color: #555;
+}
+
+.login-container input, .admin-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container button, .admin-container button {
+    padding: 10px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-container button:hover, .admin-container button:hover {
+    background-color: #0d47a1;
+}
+
+#loginResult, #uploadResult {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+}

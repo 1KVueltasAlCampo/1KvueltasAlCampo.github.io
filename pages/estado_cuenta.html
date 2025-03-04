@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estado de Cuenta - Fedintep</title>
-    <link rel="stylesheet" href="../css/estado_cuenta_style.css"> <!-- CSS específico para esta página -->
+    <link rel="stylesheet" href="../css/estado_cuenta_style.css">
 </head>
 <body>
     <div class="cuenta-container">
-        <h1>Estado de Cuenta al 31 de enero de 2024</h1>
+        <h1 id="titulo"></h1> <!-- Se mostrará la fecha en el título -->
         <div id="resultados">
+            <p id="mensaje"></p>
             <p><strong>Ahorros y aportes:</strong> <span id="totalAhorros"></span></p>
             <p><strong>Valor de créditos:</strong> <span id="totalCreditos"></span></p>
             <p><strong>Capacidad de crédito sin deudor solidario:</strong> <span id="capacidadSinDeudor"></span></p>
@@ -18,8 +19,9 @@
     </div>
 
     <script>
-        // Obtener los datos pasados desde la página anterior
         const params = new URLSearchParams(window.location.search);
+        document.getElementById("titulo").textContent = `Estado de Cuenta al ${params.get("fecha")}`;
+        document.getElementById("mensaje").textContent = params.get("mensaje");
         document.getElementById("totalAhorros").textContent = params.get("totalAhorros");
         document.getElementById("totalCreditos").textContent = params.get("totalCreditos");
         document.getElementById("capacidadSinDeudor").textContent = params.get("capacidadSinDeudor");

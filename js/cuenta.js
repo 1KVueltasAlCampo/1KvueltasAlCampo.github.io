@@ -14,7 +14,7 @@ document.addEventListener("contentLoaded", function (event) {
                 const password = passwordInput.value;
 
                 try {
-                    const response = await fetch("https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login", {
+                    const response = await fetch("https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login", { 
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -27,7 +27,7 @@ document.addEventListener("contentLoaded", function (event) {
                     if (response.ok) {
                         const estadoCuentaHTML = `
                             <div class="estado-cuenta-container">
-                                <h1>Señor/a ${data.nombres} ${data.primerApellido} ${data.segundoApellido}, su estado de cuenta en FEDINTEP al ${data.fecha} es el siguiente:</h1>
+                                <h1>${data.mensaje}</h1>
                                 <div class="estado-cuenta-resultados">
                                     <p><strong>Ahorros y aportes:</strong> <span>${data.totalAhorros}</span></p>
                                     <p><strong>Valor de créditos:</strong> <span>${data.totalCreditos}</span></p>

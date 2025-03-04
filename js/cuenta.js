@@ -8,13 +8,12 @@ document.addEventListener("contentLoaded", function (event) {
 
         if (loginForm) {
             loginForm.addEventListener("submit", async function (event) {
-                event.preventDefault(); // Evita que el formulario se envíe y recargue la página
+                event.preventDefault(); 
 
                 const cedula = cedulaInput.value;
                 const password = passwordInput.value;
 
                 try {
-                    // Hacer una solicitud al backend
                     const response = await fetch("https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login", {
                         method: "POST",
                         headers: {
@@ -26,10 +25,9 @@ document.addEventListener("contentLoaded", function (event) {
                     const data = await response.json();
 
                     if (response.ok) {
-                        // Crear la plantilla del estado de cuenta
                         const estadoCuentaHTML = `
                             <div class="estado-cuenta-container">
-                                <h1>Estado de Cuenta al 31 de enero de 2024</h1>
+                                <h1>Señor/a ${data.nombres} ${data.primerApellido} ${data.segundoApellido}, su estado de cuenta en FEDINTEP al ${data.fecha} es el siguiente:</h1>
                                 <div class="estado-cuenta-resultados">
                                     <p><strong>Ahorros y aportes:</strong> <span>${data.totalAhorros}</span></p>
                                     <p><strong>Valor de créditos:</strong> <span>${data.totalCreditos}</span></p>
@@ -40,7 +38,6 @@ document.addEventListener("contentLoaded", function (event) {
                             </div>
                         `;
 
-                        // Cargar la plantilla en el contenedor #content
                         document.getElementById("content").innerHTML = estadoCuentaHTML;
                     } else {
                         alert(data.error || "Error al iniciar sesión");
@@ -50,7 +47,6 @@ document.addEventListener("contentLoaded", function (event) {
                     alert("Error al conectar con el servidor");
                 }
 
-                // Limpiar los campos del formulario después de la solicitud
                 cedulaInput.value = "";
                 passwordInput.value = "";
             });

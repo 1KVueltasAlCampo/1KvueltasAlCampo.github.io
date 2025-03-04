@@ -1,0 +1,61 @@
+
+/* ------------------------------------------ C U E N T A ------------------------------------------ */
+
+/* Estilos específicos para cuenta.html */
+.cuenta-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cuenta-container h1 {
+    text-align: center;
+    color: #004080;
+}
+
+.cuenta-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cuenta-container label {
+    font-weight: bold;
+    color: #004080;
+}
+
+.cuenta-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.cuenta-container button {
+    padding: 10px;
+    background-color: #004080;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.cuenta-container button:hover {
+    background-color: #003366;
+}
+
+.cuenta-container .hidden {
+    display: none;
+}
+
+.cuenta-container #result {
+    margin-top: 20px;
+}
+
+.cuenta-container #result h2 {
+    color: #004080;
+}

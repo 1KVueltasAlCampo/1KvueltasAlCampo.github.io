@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado de Cuenta - Fedintep</title>
+    <link rel="stylesheet" href="../css/estado_cuenta_style.css"> <!-- CSS específico para esta página -->
+</head>
+<body>
+    <div class="cuenta-container">
+        <h1>Estado de Cuenta al 31 de enero de 2024</h1>
+        <div id="resultados">
+            <p><strong>Ahorros y aportes:</strong> <span id="totalAhorros"></span></p>
+            <p><strong>Valor de créditos:</strong> <span id="totalCreditos"></span></p>
+            <p><strong>Capacidad de crédito sin deudor solidario:</strong> <span id="capacidadSinDeudor"></span></p>
+            <p><strong>Capacidad de crédito con deudor solidario:</strong> <span id="capacidadConDeudor"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Obtener los datos pasados desde la página anterior
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById("totalAhorros").textContent = params.get("totalAhorros");
+        document.getElementById("totalCreditos").textContent = params.get("totalCreditos");
+        document.getElementById("capacidadSinDeudor").textContent = params.get("capacidadSinDeudor");
+        document.getElementById("capacidadConDeudor").textContent = params.get("capacidadConDeudor");
+    </script>
+</body>
+</html>

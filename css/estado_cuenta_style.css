@@ -1,0 +1,52 @@
+/* estado_cuenta.css */
+.estado-cuenta-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #e3f2fd; /* Fondo azul claro */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.estado-cuenta-container h1 {
+    font-size: 24px;
+    color: #0d47a1; /* Azul oscuro */
+    margin-bottom: 20px;
+}
+
+.estado-cuenta-resultados {
+    text-align: left;
+    margin-top: 20px;
+    background-color: #ffffff; /* Fondo blanco para los resultados */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.estado-cuenta-resultados p {
+    font-size: 16px;
+    color: #333; /* Texto oscuro */
+    margin-bottom: 10px;
+}
+
+.estado-cuenta-resultados strong {
+    color: #1976d2; /* Azul más claro para los títulos */
+    font-weight: bold;
+}
+
+.btn-volver {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1976d2; /* Azul */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #0d47a1; /* Azul más oscuro al hacer hover */
+}

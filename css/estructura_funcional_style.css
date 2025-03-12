@@ -1,0 +1,326 @@
+/* 📌 Contenedor general para que no se sobreponga al footer */
+.estructura-funcional {
+    padding: 40px 0;
+}
+
+/* 📌 Contenedor para centrar y reducir el tamaño del organigrama */
+.container-mapa {
+    max-width: 800px; /* Hace el organigrama más pequeño */
+    margin: 0 auto; /* Centra en la página */
+    padding: 20px;
+    background-color: #f8f9fa; /* Color de fondo sutil */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas */
+}
+
+/* ORGANIGRAMA */
+.organigrama {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-width: 600px; /* Ancho mínimo para evitar compresión excesiva */
+}
+
+/* 📌 Estilos de los niveles */
+.nivel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px; /* Espacio entre niveles */
+}
+
+/* CUADROS */
+.card {
+    background-color: #004080;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    width: 200px; /* Ancho base */
+    max-width: 100%; /* Responsive */
+    position: relative;
+    z-index: 2; /* Mayor que las líneas para asegurar visibilidad */
+    box-sizing: border-box; /* Incluye padding en el ancho */
+}
+
+/* LÍNEAS */
+.linea {
+    width: 2px;
+    background-color: #004080;
+    position: absolute; /* Cambiado a absoluto */
+    top: 0;
+    height: calc(70%); /* Altura calculada en vez de usar bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Centra la línea */
+    z-index: 1;
+}
+
+/* Línea específica después del nivel 2 */
+.nivel:nth-child(3) + .linea {
+    display: none; /* Elimina la línea después del nivel 2 */
+}
+
+/* Línea después del nivel 4 (Gerente) que debe desaparecer */
+.nivel-4 + .linea {
+    display: none; /* Oculta esta línea específica */
+}
+
+/* Añadimos líneas verticales específicas para cada conexión */
+.nivel:first-child::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #004080;
+    top: 100%;
+    height: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.nivel:nth-child(3)::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #004080;
+    top: 100%;
+    height: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.linea-horizontal {
+    width: 250px;
+    height: 2px;
+    background-color: #004080;
+    position: relative;
+    z-index: 1;
+}
+
+.linea-horizontal-larga {
+    width: 150px;
+    height: 2px;
+    background-color: #004080;
+    position: relative;
+    z-index: 1;
+}
+
+/* 📌 AUXILIAR CONTABLE a la izquierda */
+.nivel-5 {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 14%;
+    position: relative;
+}
+
+/* Línea especial para conectar Gerente con Auxiliar Contable */
+.nivel-4 {
+    position: relative;
+}
+
+/* Línea vertical para conectar Gerente con Auxiliar */
+.nivel-4::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #004080;
+    top: 50%;
+    bottom: -20px;
+    left: calc(14% + 100px); /* Alineado con el centro del Auxiliar Contable */
+    z-index: 1;
+}
+
+/* Línea horizontal para conectar la línea vertical con el Gerente */
+.nivel-4::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: #004080;
+    width: calc(36% - 100px); /* Distancia desde la posición del Auxiliar hasta el centro */
+    top: 50%;
+    left: calc(14% + 100px); /* Mismo punto que la línea vertical */
+    z-index: 1;
+}
+
+/* 📌 Espacio para agregar más contenido */
+.contenido-extra {
+    margin-top: 50px;
+    text-align: left;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.contenido-extra h2 {
+    color: #004080;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    position: relative;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.contenido-extra h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #004080;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.contenido-extra h3 {
+    color: #004080;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 30px 0 15px;
+}
+
+.contenido-extra p {
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Estilo para las descripciones de órganos */
+.organ-description {
+    display: flex;
+    margin-bottom: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 5px solid #004080;
+    transition: all 0.3s ease;
+}
+
+.organ-description:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.icon-container {
+    flex: 0 0 60px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #004080;
+    padding-top: 5px;
+}
+
+.organ-description .content {
+    flex: 1;
+}
+
+.organ-description .content p {
+    margin-top: 0;
+    font-size: 1rem;
+}
+
+.organ-description .content ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.organ-description .content li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 5px;
+    list-style-type: none;
+}
+
+.organ-description .content li::before {
+    content: "•";
+    color: #004080;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Resaltar texto importante */
+.organ-description strong {
+    color: #004080;
+    font-weight: 600;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 992px) {
+    .contenido-extra {
+        max-width: 95%;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-mapa {
+        padding: 15px;
+    }
+    
+    .card {
+        width: 180px;
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .linea-horizontal, .linea-horizontal-larga {
+        width: 120px;
+    }
+    
+    .nivel-5 {
+        padding-left: 10%;
+    }
+    
+    .nivel-4::after {
+        left: calc(10% + 90px);
+    }
+
+    .contenido-extra h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contenido-extra h3 {
+        font-size: 1.3rem;
+    }
+    
+    .organ-description {
+        flex-direction: column;
+    }
+    
+    .icon-container {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contenido-extra {
+        padding: 20px;
+    }
+    
+    .contenido-extra h2 {
+        font-size: 1.5rem;
+    }
+    
+    .contenido-extra h3 {
+        font-size: 1.2rem;
+    }
+    
+    .organ-description {
+        padding: 15px;
+    }
+}

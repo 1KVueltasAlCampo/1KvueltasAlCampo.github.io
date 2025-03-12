@@ -1,12 +1,21 @@
 /* ------------------------------------------ I N I C I O ------------------------------------------ */
 
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 /* Estilos de la galería */
 .gallery-container {
-    margin-top: 20px;
+    margin: 30px auto;
     position: relative;
     overflow: hidden;
-    width: 100%;
+    width: 90%;
     height: 500px; /* Altura fija para la galería */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .gallery {
@@ -22,31 +31,55 @@
     position: absolute;
     opacity: 0;
     transition: opacity 1s ease-in-out;
+    background-color: #f5f5f5;
 }
 
 .slide.active {
     opacity: 1;
+    z-index: 1;
 }
 
-.slide video, .slide img {
+.slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* Muestra la imagen completa sin recortar */
+    background-color: rgba(0, 0, 0, 0.03); /* Fondo sutil para las imágenes */
 }
 
 /* Texto sobre la galería */
 .overlay-text {
     position: absolute;
-    top: 50%;
+    bottom: 40px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2rem;
+    transform: translateX(-50%);
+    font-size: 1.8rem;
+    font-weight: 600;
     color: white;
-    background: rgba(0, 0, 0, 0.3); /* Más transparente */
-    padding: 10px 20px;
-    border-radius: 5px;
+    background: linear-gradient(135deg, rgba(0, 64, 128, 0.8), rgba(0, 128, 255, 0.8));
+    padding: 12px 30px;
+    border-radius: 8px;
     text-align: center;
-    z-index: 2; /* Asegura que esté por encima de la galería */
+    z-index: 2;
+    max-width: 80%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.slide.active .overlay-text {
+    animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
 
 /* Flechas de navegación */
@@ -54,50 +87,67 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 64, 128, 0.6);
     color: white;
     border: none;
-    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 1.8rem;
     z-index: 10;
-    transition: background 0.3s;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev { left: 20px; }
+.next { right: 20px; }
 
 .prev:hover, .next:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 64, 128, 0.9);
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Paginación */
 .pagination {
     position: absolute;
-    bottom: 20px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    z-index: 3; /* Asegura que esté por encima de la galería */
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     margin: 0 5px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .dot.active {
-    background-color: rgba(255, 255, 255, 1); /* Punto activo más visible */
+    background-color: #004080;
+    transform: scale(1.2);
+    box-shadow: 0 0 8px rgba(0, 64, 128, 0.6);
 }
 
 .dot:hover {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 64, 128, 0.8);
+    transform: scale(1.1);
 }
 
 /* ------------------------------------------ S E R V I C I O S ------------------------------------------ */
@@ -106,45 +156,204 @@
 .services {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding: 40px 20px;
-    background-color: #f9f9f9;
-    margin-top: 40px; /* Espacio entre la galería y los servicios */
-    margin-bottom: 60px; /* Espacio debajo de los servicios */
+    gap: 25px;
+    padding: 50px 5%;
+    background: linear-gradient(to bottom, #f9f9f9, #f0f4f8);
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
 
 .service {
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.service::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #004080, #0077cc);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
 }
 
 .service:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-15px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service:hover::before {
+    transform: scaleX(1);
 }
 
 .service a {
     text-decoration: none;
     color: inherit;
+    display: block;
+    height: 100%;
+    cursor: pointer;
 }
 
 .service i {
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: #004080;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.service:hover i {
+    transform: scale(1.2);
+    color: #0077cc;
 }
 
 .service h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
     color: #004080;
+    position: relative;
+    display: inline-block;
+}
+
+.service h3::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: #004080;
+    transition: width 0.3s ease;
+}
+
+.service:hover h3::after {
+    width: 100%;
 }
 
 .service p {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: #555;
+    line-height: 1.6;
+}
+
+/* ------------------------------------------ R E S P O N S I V E ------------------------------------------ */
+
+/* Ajustes para pantallas medianas (tablets) */
+@media (max-width: 992px) {
+    .gallery-container {
+        height: 400px;
+    }
+    
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 30px 4%;
+    }
+    
+    .overlay-text {
+        font-size: 1.5rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Ajustes para pantallas medianas (tablets) */
+@media (max-width: 768px) {
+    .gallery-container {
+        height: 350px;
+        width: 95%;
+    }
+    
+    .prev, .next {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+    
+    .prev { left: 10px; }
+    .next { right: 10px; }
+    
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 25px 3%;
+    }
+    
+    .service {
+        padding: 20px 15px;
+    }
+    
+    .service i {
+        font-size: 2.5rem;
+    }
+    
+    .service h3 {
+        font-size: 1.3rem;
+    }
+    
+    .service p {
+        font-size: 0.95rem;
+    }
+    
+    .overlay-text {
+        font-size: 1.3rem;
+        padding: 8px 16px;
+        bottom: 30px;
+    }
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .gallery-container {
+        height: 280px;
+        border-radius: 8px;
+    }
+    
+    .services {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 20px 5%;
+    }
+    
+    .service {
+        padding: 15px 10px;
+    }
+    
+    .service i {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+    }
+    
+    .service h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .service p {
+        font-size: 0.9rem;
+    }
+    
+    .overlay-text {
+        font-size: 1.1rem;
+        padding: 6px 12px;
+        bottom: 25px;
+        max-width: 90%;
+    }
+    
+    .prev, .next {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
 }

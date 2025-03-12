@@ -7,3 +7,55 @@
         text-align: center;
     }
 }
+
+/* ------------------------------------------ S E R V I C I O S ------------------------------------------ */
+
+/* Ajustes para pantallas medianas (tablets) */
+@media (max-width: 768px) {
+    .services {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablets */
+        gap: 15px;
+        padding: 20px 10px;
+    }
+
+    .service {
+        padding: 15px;
+    }
+
+    .service i {
+        font-size: 2.5rem;
+    }
+
+    .service h3 {
+        font-size: 1.3rem;
+    }
+
+    .service p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .services {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+        gap: 10px;
+        padding: 15px 5px;
+    }
+
+    .service {
+        padding: 10px;
+    }
+
+    .service i {
+        font-size: 2rem;
+    }
+
+    .service h3 {
+        font-size: 1.2rem;
+    }
+
+    .service p {
+        font-size: 0.8rem;
+    }
+}

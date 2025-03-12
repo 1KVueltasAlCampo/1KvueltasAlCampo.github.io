@@ -1,0 +1,298 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sección principal */
+.contactanos {
+    padding: 60px 0;
+    background-image: linear-gradient(to bottom, #f5f7fa, #e4e7f0);
+}
+
+/* Sección Hero */
+.hero-section {
+    margin-bottom: 60px;
+}
+
+.hero-section h1 {
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.hero-section .badge {
+    background-color: #004080;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.decorative-line {
+    width: 80px;
+    height: 4px;
+    background-color: #004080;
+    margin: 20px auto 25px;
+    border-radius: 2px;
+}
+
+.hero-section .lead {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+/* Tarjeta de Contacto */
+.contacto-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.contacto-header {
+    background-image: linear-gradient(135deg, #004080, #0066b2);
+    padding: 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.contacto-icon {
+    font-size: 2.5rem;
+    opacity: 0.9;
+    margin-right: 20px;
+}
+
+.contacto-title h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.contacto-body {
+    padding: 30px;
+}
+
+/* Ítems de información de contacto */
+.contacto-info {
+    margin-bottom: 30px;
+}
+
+.info-item {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.info-icon {
+    flex: 0 0 50px;
+    height: 50px;
+    background-color: #004080;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-size: 1.4rem;
+    box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-content h3 {
+    color: #004080;
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.info-content p {
+    margin: 0 0 5px 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+/* Descripción y formulario */
+.contacto-descripcion h3 {
+    color: #003366;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.contacto-descripcion h3 i {
+    margin-right: 10px;
+    color: #004080;
+}
+
+.contacto-descripcion p {
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.formulario-contacto {
+    background-color: #f5f7fa;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.formulario-contacto h4 {
+    color: #004080;
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.formulario-contacto .form-control {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    border-radius: 8px;
+}
+
+.formulario-contacto .form-control:focus {
+    box-shadow: 0 0 0 3px rgba(0, 64, 128, 0.15);
+    border-color: #004080;
+}
+
+.formulario-contacto .btn-primary {
+    background-color: #004080;
+    border: none;
+    padding: 10px 30px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.formulario-contacto .btn-primary:hover {
+    background-color: #003366;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección de Ubicación */
+.ubicacion-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.ubicacion-info h2 {
+    color: #003366;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ubicacion-info h2 i {
+    color: #004080;
+    margin-right: 10px;
+}
+
+.mapa-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 992px) {
+    .contacto-card, .ubicacion-card {
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contactanos {
+        padding: 40px 0;
+    }
+    
+    .hero-section {
+        margin-bottom: 40px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .contacto-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contacto-icon {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .info-icon {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .ubicacion-card {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contactanos {
+        padding: 30px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .contacto-body, .ubicacion-card {
+        padding: 20px;
+    }
+    
+    .formulario-contacto {
+        padding: 15px;
+    }
+}

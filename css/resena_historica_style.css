@@ -1,0 +1,299 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sección principal */
+.resena-historica {
+    padding: 60px 0;
+    background-image: linear-gradient(to bottom, #f5f7fa, #e4e7f0);
+}
+
+/* Sección Hero */
+.hero-section {
+    margin-bottom: 60px;
+}
+
+.hero-section h1 {
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.hero-section .badge {
+    background-color: #004080;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.decorative-line {
+    width: 80px;
+    height: 4px;
+    background-color: #004080;
+    margin: 20px auto 25px;
+    border-radius: 2px;
+}
+
+.hero-section .lead {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+/* Tarjeta de Línea de Tiempo */
+.timeline-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.timeline-header {
+    background-image: linear-gradient(135deg, #004080, #0066b2);
+    padding: 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timeline-icon {
+    font-size: 2.5rem;
+    opacity: 0.9;
+}
+
+.timeline-date {
+    text-align: right;
+}
+
+.timeline-date .year {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+}
+
+.timeline-date .month {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.timeline-body {
+    padding: 30px;
+}
+
+/* Hitos */
+.milestone {
+    display: flex;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.milestone:last-child {
+    margin-bottom: 0;
+}
+
+.milestone::after {
+    content: '';
+    position: absolute;
+    top: 60px;
+    bottom: -30px;
+    left: 25px;
+    width: 2px;
+    background-color: #e0e0e0;
+    z-index: 0;
+}
+
+.milestone:last-child::after {
+    display: none;
+}
+
+.milestone-icon {
+    flex: 0 0 50px;
+    height: 50px;
+    background-color: #004080;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 25px;
+    position: relative;
+    z-index: 0;
+    font-size: 1.4rem;
+    box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
+}
+
+.milestone-content {
+    flex: 1;
+}
+
+.milestone-content h3 {
+    color: #004080;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.milestone-content p {
+    margin-top: 0;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Sección de Valores */
+.values-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.values-container h2 {
+    color: #003366;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.values-container h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #004080;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.value-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+    border-top: 5px solid #004080;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.value-card i {
+    font-size: 2.5rem;
+    color: #004080;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.value-card h3 {
+    color: #004080;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.value-card p {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 992px) {
+    .timeline-card, .values-container {
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .resena-historica {
+        padding: 40px 0;
+    }
+    
+    .hero-section {
+        margin-bottom: 40px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .timeline-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .timeline-icon {
+        margin-bottom: 15px;
+    }
+    
+    .timeline-date {
+        text-align: center;
+    }
+    
+    .milestone {
+        flex-direction: column;
+    }
+    
+    .milestone::after {
+        left: 25px;
+    }
+    
+    .milestone-icon {
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+    
+    .values-container {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .resena-historica {
+        padding: 30px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .timeline-body, .values-container {
+        padding: 20px;
+    }
+    
+    .timeline-date .year {
+        font-size: 2rem;
+    }
+}

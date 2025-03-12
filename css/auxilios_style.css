@@ -1,0 +1,498 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sección principal */
+.auxilios-page {
+    padding: 60px 0;
+    background-image: linear-gradient(to bottom, #f5f7fa, #e4e7f0);
+}
+
+/* Sección Hero */
+.hero-section {
+    margin-bottom: 60px;
+}
+
+.hero-section h1 {
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.hero-section .badge {
+    background-color: #004080;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.decorative-line {
+    width: 80px;
+    height: 4px;
+    background-color: #004080;
+    margin: 20px auto 25px;
+    border-radius: 2px;
+}
+
+.small-decorative-line {
+    width: 60px;
+    height: 3px;
+    background-color: #004080;
+    margin: 15px auto 30px;
+    border-radius: 2px;
+}
+
+.hero-section .lead {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+/* Tarjeta de Beneficios */
+.beneficios-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+    margin-bottom: 30px;
+}
+
+.beneficios-header {
+    background-image: linear-gradient(135deg, #004080, #0066b2);
+    padding: 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.beneficios-icon {
+    font-size: 2.5rem;
+    opacity: 0.9;
+    margin-right: 20px;
+}
+
+.beneficios-title h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.beneficios-body {
+    padding: 30px;
+}
+
+.beneficios-intro {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+.beneficios-subtitle {
+    font-size: 1.15rem;
+    color: #003366;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* Tarjetas de Detalle */
+.detalle-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    height: 100%;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detalle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.detalle-header {
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.recreacion .detalle-header {
+    background-color: #f0f7ff;
+}
+
+.cumpleanos .detalle-header {
+    background-color: #fff0f7;
+}
+
+.ahorro .detalle-header {
+    background-color: #f0fff7;
+}
+
+.detalle-icon {
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.recreacion .detalle-icon {
+    color: #0066cc;
+}
+
+.cumpleanos .detalle-icon {
+    color: #e60073;
+}
+
+.ahorro .detalle-icon {
+    color: #00a67e;
+}
+
+.detalle-header h3 {
+    color: #003366;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.detalle-body {
+    padding: 25px 20px;
+}
+
+.detalle-body p {
+    color: #555;
+    margin-bottom: 20px;
+    min-height: 80px;
+}
+
+.detalle-features {
+    padding-top: 10px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.feature-item:last-child {
+    margin-bottom: 0;
+}
+
+.feature-item i {
+    margin-right: 10px;
+}
+
+.recreacion .feature-item i {
+    color: #0066cc;
+}
+
+.cumpleanos .feature-item i {
+    color: #e60073;
+}
+
+.ahorro .feature-item i {
+    color: #00a67e;
+}
+
+.feature-item span {
+    color: #444;
+}
+
+/* Tarjeta de Crédito */
+.credito-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+    margin-bottom: 30px;
+}
+
+.credito-header {
+    background-image: linear-gradient(135deg, #004080, #0066b2);
+    padding: 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.credito-icon {
+    font-size: 2rem;
+    opacity: 0.9;
+    margin-right: 20px;
+}
+
+.credito-header h3 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.credito-body {
+    padding: 30px;
+}
+
+.credito-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.credito-item:hover {
+    background-color: #f0f4f8;
+}
+
+.credito-item-icon {
+    flex: 0 0 50px;
+    height: 50px;
+    background-color: #e4f0fa;
+    color: #004080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 20px;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+}
+
+.credito-item:hover .credito-item-icon {
+    background-color: #004080;
+    color: white;
+}
+
+.credito-item-content {
+    flex: 1;
+}
+
+.credito-item-content h4 {
+    color: #003366;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.credito-item-content p {
+    color: #555;
+    margin: 0;
+}
+
+/* Sección de Auxilios */
+.auxilios-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.auxilios-card h2 {
+    color: #003366;
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auxilios-card h2 i {
+    color: #e60073;
+    margin-right: 10px;
+}
+
+.auxilio-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.auxilio-item:hover {
+    background-color: #f0f4f8;
+}
+
+.auxilio-icon {
+    flex: 0 0 60px;
+    height: 60px;
+    background-color: #f0e4fa;
+    color: #7b00e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 20px;
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+.auxilio-item:hover .auxilio-icon {
+    background-color: #7b00e6;
+    color: white;
+}
+
+.auxilio-content {
+    flex: 1;
+}
+
+.auxilio-content h4 {
+    color: #003366;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.auxilio-content p {
+    color: #555;
+    margin: 0;
+}
+
+/* Sección de Participación */
+.participacion-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+    overflow: hidden;
+}
+
+.participacion-icon-container {
+    font-size: 8rem;
+    color: #004080;
+    opacity: 0.1;
+    text-align: center;
+}
+
+.participacion-card h3 {
+    color: #003366;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.participacion-card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.participacion-card .btn-primary {
+    background-color: #004080;
+    border-color: #004080;
+    padding: 10px 20px;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.participacion-card .btn-primary:hover {
+    background-color: #003366;
+    border-color: #003366;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 992px) {
+    .beneficios-card, .credito-card, .auxilios-card, .participacion-card {
+        margin: 0 20px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .auxilios-page {
+        padding: 40px 0;
+    }
+    
+    .hero-section {
+        margin-bottom: 40px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .beneficios-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .beneficios-icon {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .credito-item, .auxilio-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .credito-item-icon, .auxilio-icon {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .auxilios-card, .participacion-card {
+        padding: 30px 20px;
+    }
+    
+    .participacion-icon-container {
+        margin-bottom: 20px;
+    }
+    
+    .detalle-body p {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .auxilios-page {
+        padding: 30px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .beneficios-body, .credito-body, .auxilios-card, .participacion-card {
+        padding: 20px;
+    }
+    
+    .credito-item, .auxilio-item {
+        padding: 15px;
+    }
+}

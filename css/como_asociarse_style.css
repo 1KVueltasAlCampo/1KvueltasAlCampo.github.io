@@ -1,0 +1,355 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sección principal */
+.como-asociarse {
+    padding: 60px 0;
+    background-image: linear-gradient(to bottom, #f5f7fa, #e4e7f0);
+}
+
+/* Sección Hero */
+.hero-section {
+    margin-bottom: 60px;
+}
+
+.hero-section h1 {
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.hero-section .badge {
+    background-color: #004080;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.decorative-line {
+    width: 80px;
+    height: 4px;
+    background-color: #004080;
+    margin: 20px auto 25px;
+    border-radius: 2px;
+}
+
+.hero-section .lead {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+/* Tarjeta de Pasos */
+.pasos-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.pasos-header {
+    background-image: linear-gradient(135deg, #004080, #0066b2);
+    padding: 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.pasos-icon {
+    font-size: 2.5rem;
+    opacity: 0.9;
+    margin-right: 20px;
+}
+
+.pasos-title h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.pasos-body {
+    padding: 30px;
+}
+
+/* Items de Pasos */
+.paso-item {
+    display: flex;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.paso-item:last-child {
+    margin-bottom: 0;
+}
+
+.paso-item::after {
+    content: '';
+    position: absolute;
+    top: 60px;
+    bottom: -30px;
+    left: 30px;
+    width: 2px;
+    background-color: #e0e0e0;
+    z-index: 0;
+}
+
+.paso-item:last-child::after {
+    display: none;
+}
+
+.paso-numero {
+    flex: 0 0 60px;
+    height: 60px;
+    background-color: #004080;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 25px;
+    position: relative;
+    z-index: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
+}
+
+.paso-content {
+    flex: 1;
+    padding-top: 10px;
+}
+
+.paso-content h3 {
+    color: #004080;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.paso-content p {
+    margin-top: 0;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.btn-descargar {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #f0f4f8;
+    color: #004080;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-descargar:hover {
+    background-color: #004080;
+    color: white;
+}
+
+.btn-descargar i {
+    margin-right: 8px;
+}
+
+/* Sección de Ubicación */
+.ubicacion-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.ubicacion-info h2 {
+    color: #003366;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.ubicacion-info h2 i {
+    color: #004080;
+    margin-right: 10px;
+}
+
+.ubicacion-info p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.ubicacion-info ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.ubicacion-info ul li {
+    margin-bottom: 5px;
+}
+
+.mapa-placeholder {
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #004080;
+    border: 1px dashed #bbd4e8;
+}
+
+.mapa-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.mapa-placeholder p {
+    font-weight: 500;
+    margin: 0;
+}
+
+/* CTA Section */
+.cta-card {
+    background-image: linear-gradient(135deg, #004080, #0066b2);
+    color: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.cta-card h2 {
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.cta-card p {
+    opacity: 0.9;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+}
+
+.cta-card .btn-primary {
+    background-color: white;
+    color: #004080;
+    border: none;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.cta-card .btn-primary:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 992px) {
+    .pasos-card, .ubicacion-card, .cta-card {
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .como-asociarse {
+        padding: 40px 0;
+    }
+    
+    .hero-section {
+        margin-bottom: 40px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .pasos-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pasos-icon {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .paso-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .paso-item::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .paso-numero {
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+    
+    .ubicacion-card {
+        padding: 30px 20px;
+        text-align: center;
+    }
+    
+    .ubicacion-info h2 {
+        justify-content: center;
+    }
+    
+    .mapa-placeholder {
+        margin-top: 30px;
+    }
+    
+    .cta-card {
+        padding: 30px 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .como-asociarse {
+        padding: 30px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .pasos-body, .ubicacion-card, .cta-card {
+        padding: 20px;
+    }
+}

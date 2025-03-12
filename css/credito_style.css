@@ -1,0 +1,414 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sección principal */
+.credito-page {
+    padding: 60px 0;
+    background-image: linear-gradient(to bottom, #f5f7fa, #e4e7f0);
+}
+
+/* Sección Hero */
+.hero-section {
+    margin-bottom: 60px;
+}
+
+.hero-section h1 {
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.hero-section .badge {
+    background-color: #004080;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.decorative-line {
+    width: 80px;
+    height: 4px;
+    background-color: #004080;
+    margin: 20px auto 25px;
+    border-radius: 2px;
+}
+
+.small-decorative-line {
+    width: 60px;
+    height: 3px;
+    background-color: #004080;
+    margin: 15px auto 30px;
+    border-radius: 2px;
+}
+
+.hero-section .lead {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+/* Tarjeta de Líneas de Crédito */
+.lineas-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+    margin-bottom: 30px;
+}
+
+.lineas-header {
+    background-image: linear-gradient(135deg, #004080, #0066b2);
+    padding: 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.lineas-icon {
+    font-size: 2.5rem;
+    opacity: 0.9;
+    margin-right: 20px;
+}
+
+.lineas-title h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.lineas-body {
+    padding: 30px;
+}
+
+.lineas-intro {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+/* Items de Líneas */
+.linea-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.linea-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.linea-icon {
+    flex: 0 0 60px;
+    height: 60px;
+    background-color: #004080;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 25px;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
+}
+
+.linea-content {
+    flex: 1;
+}
+
+.linea-content h3 {
+    color: #003366;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.linea-content p {
+    margin: 0;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Tarjetas de Detalle */
+.detalle-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    height: 100%;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detalle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.detalle-header {
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.libre-inversion .detalle-header {
+    background-color: #f0f7ff;
+}
+
+.vivienda .detalle-header {
+    background-color: #f0fff7;
+}
+
+.educacion .detalle-header {
+    background-color: #fff7f0;
+}
+
+.detalle-icon {
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.libre-inversion .detalle-icon {
+    color: #0066cc;
+}
+
+.vivienda .detalle-icon {
+    color: #00a67e;
+}
+
+.educacion .detalle-icon {
+    color: #e67e00;
+}
+
+.detalle-header h3 {
+    color: #003366;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.detalle-body {
+    padding: 25px 20px;
+}
+
+.detalle-body p {
+    color: #555;
+    margin-bottom: 20px;
+    min-height: 80px;
+}
+
+.detalle-features {
+    padding-top: 10px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.feature-item:last-child {
+    margin-bottom: 0;
+}
+
+.feature-item i {
+    margin-right: 10px;
+    color: #0066b2;
+}
+
+.libre-inversion .feature-item i {
+    color: #0066cc;
+}
+
+.vivienda .feature-item i {
+    color: #00a67e;
+}
+
+.educacion .feature-item i {
+    color: #e67e00;
+}
+
+.feature-item span {
+    color: #444;
+}
+
+/* Sección de Ventajas */
+.ventajas-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.ventajas-card h2 {
+    color: #003366;
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ventajas-card h2 i {
+    color: #004080;
+    margin-right: 10px;
+}
+
+.ventaja-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.ventaja-item:hover {
+    background-color: #f0f4f8;
+}
+
+.ventaja-icon {
+    flex: 0 0 60px;
+    height: 60px;
+    background-color: #e4f0fa;
+    color: #004080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 20px;
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+.ventaja-item:hover .ventaja-icon {
+    background-color: #004080;
+    color: white;
+}
+
+.ventaja-content {
+    flex: 1;
+}
+
+.ventaja-content h4 {
+    color: #003366;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.ventaja-content p {
+    color: #555;
+    margin: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 992px) {
+    .lineas-card, .ventajas-card {
+        margin: 0 20px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .credito-page {
+        padding: 40px 0;
+    }
+    
+    .hero-section {
+        margin-bottom: 40px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .lineas-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .lineas-icon {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .linea-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .linea-icon {
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+    
+    .ventajas-card {
+        padding: 30px 20px;
+    }
+    
+    .ventaja-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .ventaja-icon {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .detalle-body p {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .credito-page {
+        padding: 30px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .lineas-body, .ventajas-card {
+        padding: 20px;
+    }
+}

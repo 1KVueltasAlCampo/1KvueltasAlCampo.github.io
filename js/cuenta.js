@@ -36,7 +36,7 @@ document.addEventListener("contentLoaded", function (event) {
                                     <p><strong>Capacidad de crédito sin deudor solidario:</strong> <span>${data.capacidadSinDeudor}</span></p>
                                     <p><strong>Capacidad de crédito con deudor solidario:</strong> <span>${data.capacidadConDeudor}</span></p>
                                 </div>
-                                <button class="btn-volver" onclick="loadPage('cuenta.html')">Hacer otra consulta</button>
+                                <button class="btn-volver" onclick="loadPage('cuenta.html')">Volver al menú principal</button>
                             </div>
                         `;
 

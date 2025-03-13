@@ -1,4 +1,4 @@
-console.log("El archivo gallery.js se ha cargado correctamente");
+console.log("El archivo inicio.js se ha cargado correctamente");
 
 document.addEventListener("contentLoaded", function (event) {
     if (event.detail === "inicio.html") {

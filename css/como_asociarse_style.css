@@ -98,7 +98,7 @@ body {
     left: 30px;
     width: 2px;
     background-color: #e0e0e0;
-    z-index: 0;
+    z-index: -1;
 }
 
 .paso-item:last-child::after {

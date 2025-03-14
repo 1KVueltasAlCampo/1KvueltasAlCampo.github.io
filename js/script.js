@@ -8,6 +8,15 @@ function loadPage(page) {
         console.log("Galería pausada al cargar una nueva página");
     }
 
+    // Cerrar el menú móvil desplegado si está abierto
+    const navbarCollapse = document.getElementById('navbarNav');
+    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+        if (bsCollapse) {
+            bsCollapse.hide();
+        }
+    }
+
     fetch(`pages/${page}`)
         .then(response => response.text())
         .then(html => {

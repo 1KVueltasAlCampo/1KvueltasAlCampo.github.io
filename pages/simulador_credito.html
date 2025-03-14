@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Crédito - Fondo de Ahorros</title>
+    <title>Simulador de Cuotas - Fondo de Ahorros</title>
     <link rel="stylesheet" href="../css/simulador_credito_style.css">
 </head>
 <body>
     <div class="simulador-container">
-        <h1>Simulador de Crédito - Fondo de Ahorros</h1>
+        <h1>Simulador de Cuotas</h1>
         
         <form id="formSimulador" class="form-simulador">
             <div class="form-group">
@@ -24,8 +24,8 @@
             <div class="form-group">
                 <label for="tipoCredito">Tipo de Crédito:</label>
                 <select id="tipoCredito" name="tipoCredito" required>
-                    <option value="ahorros">Sobre los AHORROS Y APORTES</option>
-                    <option value="deudor">DEUDOR SOLIDARIO</option>
+                    <option value="ahorros">SOBRE LOS AHORROS Y APORTES</option>
+                    <option value="deudor">CON DEUDOR SOLIDARIO</option>
                 </select>
             </div>
             
@@ -33,27 +33,11 @@
         </form>
         
         <div id="resultados" class="resultados hidden">
-            <h2>Tabla de Amortización</h2>
-            
-            <div class="tabla-container">
-                <table id="tablaAmortizacion" class="tabla-amortizacion">
-                    <thead>
-                        <tr>
-                            <th>No. Cuota</th>
-                            <th>Fecha Vencimiento</th>
-                            <th>Cuota</th>
-                            <th>Interés</th>
-                            <th>Seguro Deuda</th>
-                            <th>Fondo Garantías</th>
-                            <th>Capital</th>
-                            <th>Saldo Capital</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablaBody">
-                        <!-- Aquí se generará la tabla dinámicamente -->
-                    </tbody>
-                </table>
+            <div class="resultado-resumen">
+                <p id="resumenCredito" class="resumen-texto"></p>
+                <p id="valorCuota" class="valor-cuota"></p>
             </div>
+            
             <button id="btnVolver" class="btn-volver">Volver a Simular</button>
         </div>
     </div>

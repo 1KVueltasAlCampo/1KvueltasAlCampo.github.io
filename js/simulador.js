@@ -2,7 +2,8 @@ document.addEventListener("contentLoaded", function() {
     // Elementos del DOM
     const formSimulador = document.getElementById("formSimulador");
     const resultados = document.getElementById("resultados");
-    const tablaBody = document.getElementById("tablaBody");
+    const resumenCredito = document.getElementById("resumenCredito");
+    const valorCuota = document.getElementById("valorCuota");
     const btnVolver = document.getElementById("btnVolver");
     
     // Evento para simular crédito
@@ -14,8 +15,11 @@ document.addEventListener("contentLoaded", function() {
         const numCuotas = parseInt(document.getElementById("cuotas").value);
         const tipoCredito = document.getElementById("tipoCredito").value;
         
-        // Generar la tabla de amortización
-        generarTablaAmortizacion(capital, numCuotas, tipoCredito);
+        // Calcular la cuota mensual
+        const cuotaMensual = calcularCuotaMensual(capital, numCuotas, tipoCredito);
+        
+        // Mostrar el resumen
+        mostrarResumen(capital, numCuotas, tipoCredito, cuotaMensual);
         
         // Mostrar resultados y ocultar formulario
         resultados.classList.remove("hidden");
@@ -27,13 +31,10 @@ document.addEventListener("contentLoaded", function() {
         // Ocultar resultados y mostrar formulario
         resultados.classList.add("hidden");
         formSimulador.style.display = "flex";
-        
-        // Limpiar tabla
-        tablaBody.innerHTML = "";
     });
     
-    // Función principal para generar tabla de amortización
-    function generarTablaAmortizacion(capital, numCuotas, tipoCredito) {
+    // Función para calcular la cuota mensual
+    function calcularCuotaMensual(capital, numCuotas, tipoCredito) {
         // Establecer tasas según el tipo de crédito
         let tasaInteres, tasaMensual;
         if (tipoCredito === "ahorros") {
@@ -48,60 +49,18 @@ document.addEventListener("contentLoaded", function() {
         const tasaSeguroDeuda = 0.00055; // 0.055%
         const tasaFondoGarantias = 0.002; // 0.002%
         
-        // Limpiar tabla anterior
-        tablaBody.innerHTML = "";
-        
-        // Generar la fila inicial con saldo capital
-        let filaInicial = document.createElement("tr");
-        filaInicial.innerHTML = `
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>${formatCurrency(capital)}</td>
-        `;
-        tablaBody.appendChild(filaInicial);
-        
-        // Variables para el cálculo de la tabla
-        let saldoCapital = capital;
-        let fechaActual = new Date();
+        // Calcular componentes de la cuota para el primer mes
+        const interes = capital * tasaInteres;
+        const seguroDeuda = capital * tasaSeguroDeuda;
+        const fondoGarantias = capital * tasaFondoGarantias;
         
         // Calcular cuota mensual (fórmula PAGO de Excel)
-        const cuotaMensual = calcularPago(tasaMensual, numCuotas, -capital, 0, 0);
+        const cuotaPrincipal = calcularPago(tasaMensual, numCuotas, -capital, 0, 0);
         
-        // Generar tabla de amortización
-        for (let i = 1; i <= numCuotas; i++) {
-            // Calcular fecha de vencimiento (día 30 del mes siguiente)
-            fechaActual.setMonth(fechaActual.getMonth() + 1);
-            const fechaVencimiento = new Date(fechaActual.getFullYear(), fechaActual.getMonth(), 30);
-            
-            // Calcular componentes de la cuota
-            const interes = saldoCapital * tasaInteres;
-            const seguroDeuda = saldoCapital * tasaSeguroDeuda;
-            const fondoGarantias = saldoCapital * tasaFondoGarantias;
-            const abonoCapital = cuotaMensual - interes - seguroDeuda - fondoGarantias;
-            
-            // Actualizar saldo capital
-            saldoCapital = saldoCapital - abonoCapital;
-            if (Math.abs(saldoCapital) < 0.01) saldoCapital = 0; // Ajuste para último mes
-            
-            // Crear fila en la tabla
-            const fila = document.createElement("tr");
-            fila.innerHTML = `
-                <td>${i}</td>
-                <td>${formatDate(fechaVencimiento)}</td>
-                <td>${formatCurrency(cuotaMensual)}</td>
-                <td>${formatCurrency(interes)}</td>
-                <td>${formatCurrency(seguroDeuda)}</td>
-                <td>${formatCurrency(fondoGarantias)}</td>
-                <td>${formatCurrency(abonoCapital)}</td>
-                <td>${formatCurrency(saldoCapital)}</td>
-            `;
-            tablaBody.appendChild(fila);
-        }
+        // La cuota total incluye el seguro y fondo de garantías
+        const cuotaTotal = cuotaPrincipal;
+        
+        return cuotaTotal;
     }
     
     // Función para calcular la cuota mensual (equivalente a PAGO en Excel)
@@ -118,6 +77,16 @@ document.addEventListener("contentLoaded", function() {
         return pmt;
     }
     
+    // Función para mostrar el resumen
+    function mostrarResumen(capital, numCuotas, tipoCredito, cuotaMensual) {
+        const tipoTexto = (tipoCredito === "ahorros") ? 
+            "sobre los ahorros y aportes" : 
+            "con deudor solidario";
+        
+        resumenCredito.textContent = `Para un crédito de ${formatCurrency(capital)} a ${numCuotas} meses (${tipoTexto}):`;
+        valorCuota.textContent = `Su cuota mensual sería de ${formatCurrency(cuotaMensual)}`;
+    }
+    
     // Función para formatear moneda
     function formatCurrency(value) {
         return new Intl.NumberFormat('es-CO', {
@@ -125,14 +94,5 @@ document.addEventListener("contentLoaded", function() {
             currency: 'COP',
             minimumFractionDigits: 0
         }).format(value);
-    }
-    
-    // Función para formatear fecha
-    function formatDate(date) {
-        return new Intl.DateTimeFormat('es-CO', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric'
-        }).format(date);
     }
 });

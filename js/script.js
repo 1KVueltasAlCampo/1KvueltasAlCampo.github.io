@@ -12,6 +12,13 @@ function loadPage(page) {
         .then(response => response.text())
         .then(html => {
             document.getElementById("content").innerHTML = html;
+            
+            // Desplazar el scroll hacia arriba
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Hace que el desplazamiento sea suave
+            });
+            
             // Disparar un evento personalizado después de cargar el contenido
             const event = new CustomEvent("contentLoaded", { detail: page });
             document.dispatchEvent(event);

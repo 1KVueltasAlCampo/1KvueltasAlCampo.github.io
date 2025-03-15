@@ -5,15 +5,61 @@ document.addEventListener("contentLoaded", function() {
     const resumenCredito = document.getElementById("resumenCredito");
     const valorCuota = document.getElementById("valorCuota");
     const btnVolver = document.getElementById("btnVolver");
+    const inputCapital = document.getElementById("capital");
+    
+    // Configurar el input de capital para formato de moneda
+    setupCurrencyInput(inputCapital);
+    
+    // Función para configurar el formato de moneda en tiempo real
+    function setupCurrencyInput(input) {
+        input.addEventListener('input', function(e) {
+            // Obtener solo los dígitos del valor ingresado
+            let value = this.value.replace(/[^\d]/g, '');
+            
+            // Si no hay valor, mostrar vacío
+            if (value === '') {
+                this.value = '';
+                return;
+            }
+            
+            // Convertir a número
+            const valueNumber = parseInt(value);
+            
+            // Formatear como moneda colombiana sin fracción
+            this.value = formatCurrencyInput(valueNumber);
+        });
+        
+        // Al perder foco, asegurar formato completo
+        input.addEventListener('blur', function() {
+            if (this.value.trim() === '' || this.value === '$') {
+                this.value = '';
+            }
+        });
+    }
+    
+    // Función para formatear como moneda para input
+    function formatCurrencyInput(value) {
+        return '$ ' + new Intl.NumberFormat('es-CO', {
+            maximumFractionDigits: 0,
+            minimumFractionDigits: 0
+        }).format(value);
+    }
     
     // Evento para simular crédito
     formSimulador.addEventListener("submit", function(event) {
         event.preventDefault();
         
-        // Obtener los valores del formulario
-        const capital = parseFloat(document.getElementById("capital").value);
+        // Obtener los valores del formulario y convertir el capital quitando el formato de moneda
+        const capitalValue = inputCapital.value.replace(/[^\d]/g, '');
+        const capital = parseFloat(capitalValue);
         const numCuotas = parseInt(document.getElementById("cuotas").value);
         const tipoCredito = document.getElementById("tipoCredito").value;
+        
+        // Validar que los valores sean numéricos
+        if (isNaN(capital) || isNaN(numCuotas) || capital <= 0 || numCuotas <= 0) {
+            alert("Por favor ingrese valores válidos");
+            return;
+        }
         
         // Calcular la cuota mensual
         const cuotaMensual = calcularCuotaMensual(capital, numCuotas, tipoCredito);

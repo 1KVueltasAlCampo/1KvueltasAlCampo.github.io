@@ -317,6 +317,13 @@ body {
     margin-right: 10px;
 }
 
+.fondo-solidaridad-intro {
+    text-align: center;
+    color: #555;
+    font-size: 1.1rem;
+    margin: 20px 0 30px;
+}
+
 .auxilio-item {
     display: flex;
     align-items: flex-start;
@@ -324,10 +331,12 @@ body {
     padding: 20px;
     border-radius: 10px;
     transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .auxilio-item:hover {
     background-color: #f0f4f8;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .auxilio-icon {
@@ -364,6 +373,21 @@ body {
 .auxilio-content p {
     color: #555;
     margin: 0;
+}
+
+/* Sección de nota de auxilios */
+.auxilios-nota {
+    background-color: #f0f7ff;
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border-left: 4px solid #0066cc;
+}
+
+.auxilios-nota p {
+    color: #444;
+    margin: 0;
+    font-size: 0.95rem;
 }
 
 /* Sección de Participación */
@@ -495,4 +519,164 @@ footer p {
     .credito-item, .auxilio-item {
         padding: 15px;
     }
+}
+
+/* Variaciones de colores para los diferentes iconos de auxilio */
+.auxilio-item:nth-child(1) .auxilio-icon {
+    background-color: #e4f0fa;
+    color: #0066cc;
+}
+
+.auxilio-item:nth-child(1):hover .auxilio-icon {
+    background-color: #0066cc;
+    color: white;
+}
+
+.auxilio-item:nth-child(2) .auxilio-icon {
+    background-color: #f0e4fa;
+    color: #8800cc;
+}
+
+.auxilio-item:nth-child(2):hover .auxilio-icon {
+    background-color: #8800cc;
+    color: white;
+}
+
+.auxilio-item:nth-child(3) .auxilio-icon {
+    background-color: #fae4e4;
+    color: #cc0055;
+}
+
+.auxilio-item:nth-child(3):hover .auxilio-icon {
+    background-color: #cc0055;
+    color: white;
+}
+
+.auxilio-item:nth-child(4) .auxilio-icon {
+    background-color: #f0fae4;
+    color: #66cc00;
+}
+
+.auxilio-item:nth-child(4):hover .auxilio-icon {
+    background-color: #66cc00;
+    color: white;
+}
+
+.auxilio-item:nth-child(5) .auxilio-icon {
+    background-color: #e4faef;
+    color: #00cc88;
+}
+
+.auxilio-item:nth-child(5):hover .auxilio-icon {
+    background-color: #00cc88;
+    color: white;
+}
+
+.auxilio-item:nth-child(6) .auxilio-icon {
+    background-color: #e4f2fa;
+    color: #0099cc;
+}
+
+.auxilio-item:nth-child(6):hover .auxilio-icon {
+    background-color: #0099cc;
+    color: white;
+}
+
+.auxilio-item:nth-child(7) .auxilio-icon {
+    background-color: #f7e4fa;
+    color: #cc00cc;
+}
+
+.auxilio-item:nth-child(7):hover .auxilio-icon {
+    background-color: #cc00cc;
+    color: white;
+}
+
+.auxilio-item:nth-child(8) .auxilio-icon {
+    background-color: #faf2e4;
+    color: #cc7700;
+}
+
+.auxilio-item:nth-child(8):hover .auxilio-icon {
+    background-color: #cc7700;
+    color: white;
+}
+
+.auxilio-item:nth-child(9) .auxilio-icon {
+    background-color: #e8e4fa;
+    color: #5500cc;
+}
+
+.auxilio-item:nth-child(9):hover .auxilio-icon {
+    background-color: #5500cc;
+    color: white;
+}
+
+/* Estilos para la nueva nota al final de la sección de auxilios */
+.requisitos-nota {
+    margin-top: 30px;
+    background-color: #f7f9fc;
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 4px solid #0066cc;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.requisitos-nota p {
+    margin: 0;
+}
+
+/* Estilos específicos para SMLMV */
+.smlmv {
+    font-weight: 500;
+}
+
+/* Mejoras en accesibilidad */
+.auxilio-content h4 {
+    margin-bottom: 10px;
+}
+
+.auxilio-content p {
+    line-height: 1.5;
+}
+
+/* Mejoras visuales para la sección de auxilios */
+.auxilios-section {
+    position: relative;
+}
+
+.auxilios-section::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auxilios-card {
+    position: relative;
+    z-index: 0;
+}
+
+/* Estilos para destacar el título del fondo de solidaridad */
+.auxilios-card h2 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+/* Clase para resaltar términos importantes */
+.destacado {
+    font-weight: 600;
+    color: #004080;
 }

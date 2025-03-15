@@ -1,6 +1,6 @@
 /* ------------------------------------------ N A V B A R ------------------------------------------ */
 .navbar {
-    background-color: #cce7ff !important;
+    background-color: #193783 !important;
 }
 
 .navbar-brand-container {
@@ -22,7 +22,7 @@
 
 /* Navbar dropdown */
 .navbar-nav .nav-link {
-    color: #004080 !important;
+    color: #ffffff !important;
 }
 
 .navbar-nav .dropdown-menu {
@@ -44,8 +44,8 @@
 
 /* ------------------------------------------ F O O T E R ------------------------------------------ */
 footer {
-    background-color: #cce7ff;
-    color: #004080;
+    background-color: #193783;
+    color: #ffffff;
     text-align: center;
     padding: 10px;
     position: fixed;

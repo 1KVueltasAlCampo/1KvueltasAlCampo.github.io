@@ -265,8 +265,9 @@ body {
     
     .overlay-text {
         font-size: 1.4rem;
-        padding: 10px 20px;
-        background: rgba(0, 64, 128, 0.5);
+        padding: 8px 16px;
+        background: rgba(0, 64, 128, 0.45);
+        bottom: 50px;
     }
 }
 
@@ -309,11 +310,12 @@ body {
     }
     
     .overlay-text {
-        font-size: 1.1rem;
-        padding: 8px 16px;
-        bottom: 30px;
-        background: rgba(0, 64, 128, 0.45);
+        font-size: 0.95rem;
+        padding: 6px 14px;
+        bottom: 50px;
+        background: rgba(0, 64, 128, 0.35); /* Más transparente */
         border-radius: 25px;
+        max-width: 75%; /* Más estrecho */
     }
 }
 
@@ -349,12 +351,12 @@ body {
     }
     
     .overlay-text {
-        font-size: 0.95rem;
-        padding: 6px 12px;
-        bottom: 20px;
-        max-width: 85%;
-        background: rgba(0, 64, 128, 0.4);
-        font-weight: 500;
+        font-size: 0.8rem; /* Mucho más pequeño */
+        font-weight: 400; /* Menos peso */
+        padding: 4px 10px; /* Padding reducido */
+        bottom: 50px;
+        max-width: 70%; /* Más estrecho */
+        background: rgba(0, 64, 128, 0.3); /* Mucho más transparente */
         border-radius: 20px;
     }
     
@@ -362,5 +364,16 @@ body {
         width: 35px;
         height: 35px;
         font-size: 1.2rem;
+    }
+}
+
+/* Estilo adicional para cuando la pantalla es muy pequeña */
+@media (max-width: 360px) {
+    .overlay-text {
+        font-size: 0.75rem; /* Aún más pequeño */
+        padding: 3px 8px; /* Padding mínimo */
+        bottom: 45px;
+        max-width: 65%; /* Más estrecho */
+        background: rgba(0, 64, 128, 0.25); /* Extremadamente transparente */
     }
 }

@@ -55,3 +55,160 @@
 .section-valores .row {
     justify-content: center;
 }
+
+
+/* Sección de Valores */
+.values-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    border: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.values-container h2 {
+    color: #003366;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.values-container h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #004080;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.value-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+    border-top: 5px solid #004080;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.value-card i {
+    font-size: 2.5rem;
+    color: #004080;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.value-card h3 {
+    color: #004080;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.value-card p {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 992px) {
+    .timeline-card, .values-container {
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .resena-historica {
+        padding: 40px 0;
+    }
+    
+    .hero-section {
+        margin-bottom: 40px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .timeline-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .timeline-icon {
+        margin-bottom: 15px;
+    }
+    
+    .timeline-date {
+        text-align: center;
+    }
+    
+    .milestone {
+        flex-direction: column;
+    }
+    
+    .milestone::after {
+        left: 25px;
+    }
+    
+    .milestone-icon {
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+    
+    .values-container {
+        padding: 30px 20px;
+    }
+    
+    .value-card {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .resena-historica {
+        padding: 30px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .timeline-body, .values-container {
+        padding: 20px;
+    }
+    
+    .timeline-date .year {
+        font-size: 2rem;
+    }
+    
+    .value-card {
+        padding: 20px 15px;
+    }
+}

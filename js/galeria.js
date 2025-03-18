@@ -16,29 +16,94 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// Configuración de la galería
+const galleryConfig = {
+    initialBatch: 12,      // Cantidad inicial de imágenes a cargar
+    batchSize: 8,          // Cantidad de imágenes a cargar por lote
+    startIndex: 4,         // Índice inicial (inicio_4.jpg)
+    endIndex: 33,          // Índice final (inicio_33.jpg)
+    currentIndex: 4,       // Índice actual para rastrear la carga
+    layoutPatterns: [      // Patrones de diseño para alternar tamaños de imágenes
+        { type: 'large'},
+        { type: ''},
+        { type: ''},
+        { type: 'medium'},
+        { type: ''},
+        { type: 'medium'},
+        { type: ''}
+    ]
+};
+
 function initGallery() {
     console.log("Configurando la galería de fotos");
     
-    // Inicializar elementos de la galería
-    const galleryItems = document.querySelectorAll('.gallery-item');
+    // Inicializar la galería con el primer lote de imágenes
+    loadImageBatch(galleryConfig.initialBatch);
     
-    // Agregar animaciones con retraso
-    galleryItems.forEach((item, index) => {
-        item.style.animationDelay = `${0.1 * index}s`;
-    });
+    // Configurar el botón "Cargar más"
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            loadImageBatch(galleryConfig.batchSize);
+        });
+    }
     
     // Configurar el lightbox
     setupLightbox();
-    
-    // Configurar el botón "Ver más"
-    const viewMoreBtn = document.querySelector('.view-more-btn');
-    if (viewMoreBtn) {
-        viewMoreBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log("Botón 'Ver más fotos' presionado - Sin funcionalidad por el momento");
-            // Aquí se puede agregar la funcionalidad futura
-        });
+}
+
+// Función para cargar un lote de imágenes
+function loadImageBatch(batchSize) {
+    const gallery = document.getElementById('photo-gallery');
+    if (!gallery) {
+        console.error("No se encontró el contenedor de la galería");
+        return;
     }
+    
+    let imagesLoaded = 0;
+    const maxIndex = Math.min(galleryConfig.currentIndex + batchSize - 1, galleryConfig.endIndex);
+    
+    for (let i = galleryConfig.currentIndex; i <= maxIndex; i++) {
+        if (i > galleryConfig.endIndex) break;
+        
+        // Determinar el patrón de diseño para esta imagen
+        const patternIndex = (i - galleryConfig.startIndex) % galleryConfig.layoutPatterns.length;
+        const pattern = galleryConfig.layoutPatterns[patternIndex];
+        
+        // Crear el elemento de la galería
+        const galleryItem = document.createElement('div');
+        galleryItem.className = `gallery-item ${pattern.type}`;
+        
+        // Calcular el retraso de animación
+        const animationDelay = (imagesLoaded * 0.1);
+        galleryItem.style.animationDelay = `${animationDelay}s`;
+        
+        // Construir el HTML del item - Sin título en el overlay
+        galleryItem.innerHTML = `
+            <img src="../img/inicio_${i}.jpg" alt="Imagen ${i}" loading="lazy">
+            <div class="overlay">
+                <div class="overlay-content">
+                </div>
+            </div>
+        `;
+        
+        // Agregar el item a la galería
+        gallery.appendChild(galleryItem);
+        imagesLoaded++;
+    }
+    
+    // Actualizar el índice actual para la próxima carga
+    galleryConfig.currentIndex = maxIndex + 1;
+    
+    // Mostrar/ocultar el botón de cargar más según sea necesario
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    if (loadMoreBtn && galleryConfig.currentIndex > galleryConfig.endIndex) {
+        loadMoreBtn.style.display = 'none';
+    }
+    
+    // Actualizar el lightbox para incluir las nuevas imágenes
+    setupLightbox();
 }
 
 function setupLightbox() {
@@ -55,7 +120,6 @@ function setupLightbox() {
             <div class="lightbox-content">
                 <button class="lightbox-close">&times;</button>
                 <img class="lightbox-image" src="" alt="Imagen ampliada">
-                <div class="lightbox-caption"></div>
                 <button class="lightbox-prev">&#10094;</button>
                 <button class="lightbox-next">&#10095;</button>
             </div>
@@ -103,12 +167,7 @@ function setupLightbox() {
                 object-fit: contain;
                 border: 2px solid white;
                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            }
-            .lightbox-caption {
-                color: white;
-                margin-top: 20px;
-                font-size: 1.2rem;
-                text-align: center;
+                transition: opacity 0.2s ease;
             }
             .lightbox-close {
                 position: absolute;
@@ -164,19 +223,21 @@ function setupLightbox() {
         nextImage();
     });
     
+    // Eliminar eventos previos para evitar duplicados
+    galleryItems.forEach(item => {
+        const newItem = item.cloneNode(true);
+        item.parentNode.replaceChild(newItem, item);
+    });
+    
     // Agregar el evento de clic a cada elemento de la galería
-    galleryItems.forEach((item, index) => {
+    document.querySelectorAll('.gallery-item').forEach((item, index) => {
         item.addEventListener('click', function() {
-            // Recopilar todas las imágenes y sus textos
-            images = Array.from(galleryItems).map(item => {
+            // Recopilar todas las imágenes sin títulos
+            images = Array.from(document.querySelectorAll('.gallery-item')).map(item => {
                 const img = item.querySelector('img');
-                const title = item.querySelector('.overlay-content h3')?.textContent || '';
-                const desc = item.querySelector('.overlay-content p')?.textContent || '';
                 return {
                     src: img.src,
-                    alt: img.alt,
-                    title: title,
-                    description: desc
+                    alt: img.alt
                 };
             });
             
@@ -190,17 +251,9 @@ function setupLightbox() {
     function openLightbox(imageData) {
         const lightbox = document.querySelector('.lightbox-container');
         const lightboxImg = document.querySelector('.lightbox-image');
-        const caption = document.querySelector('.lightbox-caption');
         
         lightboxImg.src = imageData.src;
         lightboxImg.alt = imageData.alt;
-        
-        // Mostrar título y descripción si existen
-        let captionText = imageData.title;
-        if (imageData.description) {
-            captionText += `<p>${imageData.description}</p>`;
-        }
-        caption.innerHTML = captionText;
         
         // Mostrar el lightbox con una animación
         lightbox.style.display = 'block';
@@ -244,7 +297,6 @@ function setupLightbox() {
     // Actualizar el contenido del lightbox sin cerrarlo y abrirlo
     function updateLightboxContent(imageData) {
         const lightboxImg = document.querySelector('.lightbox-image');
-        const caption = document.querySelector('.lightbox-caption');
         
         // Aplicar una breve transición de opacidad
         lightboxImg.style.opacity = 0;
@@ -252,13 +304,6 @@ function setupLightbox() {
         setTimeout(() => {
             lightboxImg.src = imageData.src;
             lightboxImg.alt = imageData.alt;
-            
-            // Mostrar título y descripción si existen
-            let captionText = imageData.title;
-            if (imageData.description) {
-                captionText += `<p>${imageData.description}</p>`;
-            }
-            caption.innerHTML = captionText;
             
             lightboxImg.style.opacity = 1;
         }, 200);
@@ -276,90 +321,4 @@ function setupLightbox() {
             closeLightbox();
         }
     });
-}
-
-// Función para agregar dinámicamente nuevas imágenes a la galería
-window.addGalleryItem = function(imageSrc, title, description = '', size = '') {
-    // Crear el nuevo elemento de galería
-    const gallery = document.querySelector('.photo-gallery');
-    if (!gallery) {
-        console.error("No se encontró el contenedor de la galería");
-        return;
-    }
-    
-    const newItem = document.createElement('div');
-    
-    // Asignar clase y tamaño si se especifica (medium o large)
-    newItem.className = 'gallery-item';
-    if (size === 'medium' || size === 'large') {
-        newItem.classList.add(size);
-    }
-    
-    // Estructura HTML del nuevo elemento
-    newItem.innerHTML = `
-        <img src="${imageSrc}" alt="${title}">
-        <div class="overlay">
-            <div class="overlay-content">
-                <h3>${title}</h3>
-                ${description ? `<p>${description}</p>` : ''}
-            </div>
-        </div>
-    `;
-    
-    // Agregar a la galería con animación
-    newItem.style.opacity = 0;
-    gallery.appendChild(newItem);
-    
-    // Forzar un reflow antes de agregar la animación
-    void newItem.offsetWidth;
-    
-    // Aplicar la animación
-    newItem.style.animation = 'fadeIn 0.6s forwards';
-    
-    // Actualizar los eventos después de agregar un nuevo elemento
-    setupLightbox();
-    
-    console.log(`Nueva imagen agregada: "${title}"`);
-};
-
-// Función para eliminar imágenes de la galería
-window.removeGalleryItem = function(index) {
-    const items = document.querySelectorAll('.gallery-item');
-    if (index >= 0 && index < items.length) {
-        // Agregar animación de salida
-        items[index].style.animation = 'fadeOut 0.4s forwards';
-        
-        // Eliminar después de la animación
-        setTimeout(() => {
-            items[index].remove();
-            // Volver a inicializar la galería para actualizar eventos
-            setupLightbox();
-            console.log(`Imagen en posición ${index} eliminada`);
-        }, 400);
-    } else {
-        console.error(`Índice fuera de rango: ${index}. La galería tiene ${items.length} elementos.`);
-    }
-};
-
-// Agregar estilos para la animación de salida si no existen
-if (!document.querySelector('style[data-id="gallery-animations"]')) {
-    const animationStyles = document.createElement('style');
-    animationStyles.dataset.id = 'gallery-animations';
-    animationStyles.textContent = `
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-        }
-        
-        .lightbox-image {
-            transition: opacity 0.2s ease;
-        }
-    `;
-    document.head.appendChild(animationStyles);
 }

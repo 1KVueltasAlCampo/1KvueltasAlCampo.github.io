@@ -65,6 +65,8 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    /* Carga perezosa para optimizar */
+    loading: lazy;
 }
 
 /* Efecto hover para las imágenes */
@@ -110,11 +112,6 @@
     font-size: 1.3rem;
     margin-bottom: 5px;
     font-weight: 600;
-}
-
-.overlay-content p {
-    font-size: 0.9rem;
-    opacity: 0.9;
 }
 
 /* Botón de ver más */
@@ -170,14 +167,17 @@
     opacity: 0;
 }
 
-/* Retraso de animación para cada elemento */
-.gallery-item:nth-child(1) { animation-delay: 0.1s; }
-.gallery-item:nth-child(2) { animation-delay: 0.2s; }
-.gallery-item:nth-child(3) { animation-delay: 0.3s; }
-.gallery-item:nth-child(4) { animation-delay: 0.4s; }
-.gallery-item:nth-child(5) { animation-delay: 0.5s; }
-.gallery-item:nth-child(6) { animation-delay: 0.6s; }
-.gallery-item:nth-child(7) { animation-delay: 0.7s; }
+/* Animación para la salida de elementos */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
 
 /* Media queries para responsividad */
 @media (max-width: 1200px) {

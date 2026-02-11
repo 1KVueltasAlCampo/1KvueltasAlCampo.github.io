@@ -1,20 +1,18 @@
-/* --- LIMPIEZA Y ESTRUCTURA --- */
+/* quienes_somos_style.css - Refactorizado con Variables */
 
 .quienes-somos-page {
     padding: 20px 0;
     width: 100%;
-    overflow-x: hidden; /* Previene scroll horizontal accidental */
+    overflow-x: hidden;
 }
 
-/* Separación Vertical Sólida (Evita solapamientos) */
 .qs-section {
     position: relative;
     width: 100%;
-    margin-bottom: 60px; /* Espacio seguro entre bloques */
+    margin-bottom: 60px;
     display: block;
 }
 
-/* Títulos Principales */
 .section-title {
     color: var(--color-primary);
     font-weight: 800;
@@ -38,40 +36,28 @@
     transform: translateX(-50%);
 }
 
-/* --- TARJETAS DE TEXTO (Misión/Visión) --- */
 .fed-card {
-    background-color: #ffffff;
+    background-color: var(--bg-white);
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    box-shadow: var(--shadow-sm);
     border: none;
     transition: transform 0.3s ease;
-    height: 100%; /* Para igualar alturas en columnas */
+    height: 100%;
 }
 
 .fed-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
 }
 
-/* --- EL FIX DEL ESPACIO (PADDING) --- */
-.card-body {
-    /* MÓVIL: Padding justo y necesario. Ni más, ni menos. */
-    padding: 1.5rem !important; 
-}
+.card-body { padding: 1.5rem !important; }
+@media (min-width: 992px) { .card-body { padding: 3rem !important; } }
 
-@media (min-width: 992px) {
-    /* ESCRITORIO: Más aire para elegancia */
-    .card-body {
-        padding: 3rem !important;
-    }
-}
-
-/* Estilo del Texto */
 .fed-text {
-    color: #444; /* Gris oscuro, alto contraste */
+    color: #444;
     font-size: 1rem;
-    line-height: 1.6; /* 1.6 es el estándar de legibilidad web */
-    text-align: left; /* Alineación natural */
+    line-height: 1.6;
+    text-align: left;
     margin-bottom: 0;
 }
 
@@ -81,13 +67,13 @@
     font-size: 1.5rem;
 }
 
-/* --- SECCIÓN DE VALORES --- */
+/* Valores */
 .values-section .container {
-    background-color: #fff;
+    background-color: var(--bg-white);
     border-radius: 20px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.04);
-    padding: 40px 20px; /* Padding del contenedor gris/blanco */
-    border: 1px solid rgba(0,0,0,0.02);
+    box-shadow: var(--shadow-sm);
+    padding: 40px 20px;
+    border: 1px solid var(--border-light);
 }
 
 .value-item {
@@ -102,17 +88,16 @@
 }
 
 .value-item:hover {
-    background-color: #fff;
+    background-color: var(--bg-white);
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-sm);
 }
 
-/* Íconos (Burbuja) */
 .icon-box {
     width: 70px;
     height: 70px;
     margin: 0 auto 20px auto;
-    background-color: #e6f0ff; /* Azul muy claro */
+    background-color: var(--bg-accent);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -124,33 +109,25 @@
 
 .value-item:hover .icon-box {
     background-color: var(--color-primary);
-    color: #ffffff;
+    color: var(--bg-white);
     transform: scale(1.1);
 }
 
 .value-item h3 {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #193783; /* Color secundario */
+    color: var(--color-secondary);
     margin-bottom: 10px;
 }
 
 .value-item p {
     font-size: 0.95rem;
-    color: #666;
+    color: var(--text-muted);
     line-height: 1.4;
     margin: 0;
 }
 
-/* RESPONSIVE EXTRA */
 @media (max-width: 576px) {
-    /* En móviles muy pequeños, reducimos título */
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    /* Aseguramos que la tarjeta ocupe el 100% visible */
-    .fed-card {
-        width: 100%;
-    }
+    .section-title { font-size: 1.5rem; }
+    .fed-card { width: 100%; }
 }

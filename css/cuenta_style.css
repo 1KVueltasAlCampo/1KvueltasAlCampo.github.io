@@ -1,61 +1,44 @@
+/* cuenta_style.css */
 
-/* ------------------------------------------ C U E N T A ------------------------------------------ */
-
-/* Estilos específicos para cuenta.html */
 .cuenta-container {
     max-width: 600px;
     margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    background-color: var(--bg-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-sm);
 }
 
-.cuenta-container h1 {
-    text-align: center;
-    color: #004080;
-}
+.cuenta-container h1 { text-align: center; color: var(--color-primary); margin-bottom: 30px; }
 
 .cuenta-container form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
-.cuenta-container label {
-    font-weight: bold;
-    color: #004080;
-}
+.cuenta-container label { font-weight: 600; color: var(--color-primary-dark); }
 
 .cuenta-container input {
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1rem;
 }
 
 .cuenta-container button {
-    padding: 10px;
-    background-color: #004080;
+    padding: 12px;
+    background-color: var(--color-primary);
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
-.cuenta-container button:hover {
-    background-color: #003366;
-}
+.cuenta-container button:hover { background-color: var(--color-primary-dark); }
 
-.cuenta-container .hidden {
-    display: none;
-}
-
-.cuenta-container #result {
-    margin-top: 20px;
-}
-
-.cuenta-container #result h2 {
-    color: #004080;
-}
+.cuenta-container .hidden { display: none; }
+.cuenta-container #result { margin-top: 30px; }
+.cuenta-container #result h2 { color: var(--color-primary); }

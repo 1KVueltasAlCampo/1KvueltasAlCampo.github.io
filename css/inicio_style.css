@@ -1,21 +1,15 @@
-/* ------------------------------------------ I N I C I O ------------------------------------------ */
+/* inicio_style.css */
 
-/* Estilos generales */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Estilos de la galería */
+/* Galería / Slider */
 .gallery-container {
     margin: 30px auto;
     position: relative;
     overflow: hidden;
     width: 90%;
-    height: 500px; /* Altura fija para la galería */
-    border-radius: 12px;
+    height: 500px;
+    border-radius: var(--radius-card);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background-color: #000; /* Fondo negro por si la imagen tarda */
 }
 
 .gallery {
@@ -34,56 +28,45 @@ body {
     background-color: #f5f5f5;
 }
 
-.slide.active {
-    opacity: 1;
-    z-index: 1;
-}
+.slide.active { opacity: 1; z-index: 1; }
 
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Muestra la imagen completa sin recortar */
-    background-color: rgba(0, 0, 0, 0.03); /* Fondo sutil para las imágenes */
+    object-fit: contain;
 }
 
-/* Texto sobre la galería - MODIFICADO PARA MAYOR TRANSPARENCIA */
+/* Texto sobre galería */
 .overlay-text {
     position: absolute;
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.6rem; /* Tamaño ligeramente reducido del original 1.8rem */
-    font-weight: 500; /* Menos peso que el original 600 */
+    font-size: 1.6rem;
+    font-weight: 500;
     color: white;
-    background: rgba(0, 64, 128, 0.5); /* Más transparente que el original */
-    padding: 10px 25px; /* Ligeramente reducido */
-    border-radius: 30px; /* Más redondeado */
+    /* Usamos var pero con transparencia manual porque CSS no mezcla vars con alpha fácilmente sin trucos */
+    background: rgba(0, 64, 128, 0.6); 
+    padding: 10px 25px;
+    border-radius: 30px;
     text-align: center;
     z-index: 2;
     max-width: 80%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más sutil */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(3px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Sombra de texto para legibilidad */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.slide.active .overlay-text {
-    animation: fadeInUp 0.8s forwards;
-}
+.slide.active .overlay-text { animation: fadeInUp 0.8s forwards; }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translate(-50%, 30px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, 0);
-    }
+    from { opacity: 0; transform: translate(-50%, 30px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
 }
 
-/* Flechas de navegación */
+/* Controles */
 .prev, .next {
     position: absolute;
     top: 50%;
@@ -108,10 +91,9 @@ body {
 .next { right: 20px; }
 
 .prev:hover, .next:hover {
-    background: rgba(0, 64, 128, 0.9);
+    background: var(--color-primary);
     opacity: 1;
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Paginación */
@@ -141,19 +123,13 @@ body {
 }
 
 .dot.active {
-    background-color: #004080;
+    background-color: var(--color-primary);
     transform: scale(1.2);
-    box-shadow: 0 0 8px rgba(0, 64, 128, 0.6);
 }
 
-.dot:hover {
-    background-color: rgba(0, 64, 128, 0.8);
-    transform: scale(1.1);
-}
+.dot:hover { background-color: var(--color-primary-light); }
 
-/* ------------------------------------------ S E R V I C I O S ------------------------------------------ */
-
-/* Sección de servicios */
+/* Servicios */
 .services {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -167,11 +143,11 @@ body {
 .service {
     text-align: center;
     padding: 30px 20px;
-    background-color: #fff;
+    background-color: var(--bg-white);
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-sm);
     transition: all 0.4s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-light);
     position: relative;
     overflow: hidden;
 }
@@ -183,7 +159,7 @@ body {
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(to right, #004080, #0077cc);
+    background: linear-gradient(to right, var(--color-primary), var(--color-primary-light));
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
@@ -191,38 +167,26 @@ body {
 
 .service:hover {
     transform: translateY(-15px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-hover);
 }
+.service:hover::before { transform: scaleX(1); }
 
-.service:hover::before {
-    transform: scaleX(1);
-}
-
-.service a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    height: 100%;
-    cursor: pointer;
-}
+.service a { text-decoration: none; color: inherit; display: block; height: 100%; }
 
 .service i {
     font-size: 3.5rem;
-    color: #004080;
+    color: var(--color-primary);
     margin-bottom: 20px;
     transition: all 0.3s ease;
     display: inline-block;
 }
 
-.service:hover i {
-    transform: scale(1.2);
-    color: #0077cc;
-}
+.service:hover i { transform: scale(1.2); color: var(--color-primary-light); }
 
 .service h3 {
     font-size: 1.6rem;
     margin-bottom: 15px;
-    color: #004080;
+    color: var(--color-primary);
     position: relative;
     display: inline-block;
 }
@@ -235,145 +199,28 @@ body {
     transform: translateX(-50%);
     width: 50px;
     height: 2px;
-    background-color: #004080;
+    background-color: var(--color-primary);
     transition: width 0.3s ease;
 }
+.service:hover h3::after { width: 100%; }
 
-.service:hover h3::after {
-    width: 100%;
-}
+.service p { font-size: 1.05rem; color: var(--text-muted); }
 
-.service p {
-    font-size: 1.05rem;
-    color: #555;
-    line-height: 1.6;
-}
-
-/* ------------------------------------------ R E S P O N S I V E ------------------------------------------ */
-
-/* Ajustes para pantallas medianas (tablets) */
+/* Responsive */
 @media (max-width: 992px) {
-    .gallery-container {
-        height: 400px;
-    }
-    
-    .services {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        padding: 30px 4%;
-    }
-    
-    .overlay-text {
-        font-size: 1.4rem;
-        padding: 8px 16px;
-        background: rgba(0, 64, 128, 0.45);
-        bottom: 50px;
-    }
+    .gallery-container { height: 400px; }
+    .services { grid-template-columns: repeat(2, 1fr); padding: 30px 4%; }
 }
 
-/* Ajustes para pantallas medianas (tablets) */
 @media (max-width: 768px) {
-    .gallery-container {
-        height: 350px;
-        width: 95%;
-    }
-    
-    .prev, .next {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5rem;
-    }
-    
-    .prev { left: 10px; }
-    .next { right: 10px; }
-    
-    .services {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        padding: 25px 3%;
-    }
-    
-    .service {
-        padding: 20px 15px;
-    }
-    
-    .service i {
-        font-size: 2.5rem;
-    }
-    
-    .service h3 {
-        font-size: 1.3rem;
-    }
-    
-    .service p {
-        font-size: 0.95rem;
-    }
-    
-    .overlay-text {
-        font-size: 0.95rem;
-        padding: 6px 14px;
-        bottom: 50px;
-        background: rgba(0, 64, 128, 0.35); /* Más transparente */
-        border-radius: 25px;
-        max-width: 75%; /* Más estrecho */
-    }
+    .gallery-container { height: 350px; width: 95%; }
+    .prev, .next { width: 40px; height: 40px; font-size: 1.5rem; }
+    .services { gap: 15px; padding: 25px 3%; }
+    .overlay-text { font-size: 0.95rem; padding: 6px 14px; bottom: 50px; }
 }
 
-/* Ajustes para pantallas pequeñas (móviles) */
 @media (max-width: 480px) {
-    .gallery-container {
-        height: 280px;
-        border-radius: 8px;
-    }
-    
-    .services {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 20px 5%;
-    }
-    
-    .service {
-        padding: 15px 10px;
-    }
-    
-    .service i {
-        font-size: 2.2rem;
-        margin-bottom: 12px;
-    }
-    
-    .service h3 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-    }
-    
-    .service p {
-        font-size: 0.9rem;
-    }
-    
-    .overlay-text {
-        font-size: 0.8rem; /* Mucho más pequeño */
-        font-weight: 400; /* Menos peso */
-        padding: 4px 10px; /* Padding reducido */
-        bottom: 50px;
-        max-width: 70%; /* Más estrecho */
-        background: rgba(0, 64, 128, 0.3); /* Mucho más transparente */
-        border-radius: 20px;
-    }
-    
-    .prev, .next {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
-    }
-}
-
-/* Estilo adicional para cuando la pantalla es muy pequeña */
-@media (max-width: 360px) {
-    .overlay-text {
-        font-size: 0.75rem; /* Aún más pequeño */
-        padding: 3px 8px; /* Padding mínimo */
-        bottom: 45px;
-        max-width: 65%; /* Más estrecho */
-        background: rgba(0, 64, 128, 0.25); /* Extremadamente transparente */
-    }
+    .gallery-container { height: 280px; }
+    .services { grid-template-columns: 1fr; padding: 20px 5%; }
+    .overlay-text { font-size: 0.8rem; padding: 4px 10px; max-width: 70%; }
 }

@@ -1,142 +1,77 @@
-/* resena_historica_style.css */
+/* resena_historica_style.css - Refactorizado */
 
-/* Estilos generales */
-body {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f7fa;
-    margin: 0;
-    padding: 0;
-}
-
-/* Sección principal */
 .resena-historica {
     padding: 60px 0;
-    background-image: linear-gradient(to bottom, #f5f7fa, #e4e7f0);
+    background-image: linear-gradient(to bottom, var(--bg-body), #e4e7f0);
 }
 
-/* Sección Hero */
-.hero-section {
-    margin-bottom: 60px;
-}
-
-.hero-section h1 {
-    color: #003366;
-    margin-bottom: 15px;
-}
-
-.hero-section .badge {
-    background-color: #004080;
-    font-size: 0.9rem;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-weight: 500;
-}
-
-.decorative-line {
-    width: 80px;
-    height: 4px;
-    background-color: #004080;
-    margin: 20px auto 25px;
-    border-radius: 2px;
-}
-
-.hero-section .lead {
-    font-size: 1.2rem;
-    margin-bottom: 0;
-}
-
-/* Tarjeta de Línea de Tiempo */
 .timeline-card {
-    background-color: white;
+    background-color: var(--bg-white);
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-sm);
     overflow: hidden;
     position: relative;
-    border: 1px solid rgba(0, 64, 128, 0.1);
+    border: 1px solid var(--border-light);
 }
 
 .timeline-header {
-    background-image: linear-gradient(135deg, #004080, #0066b2);
+    background-image: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
     padding: 25px;
-    color: white;
+    color: white; /* Esto debería bastar para texto plano */
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.timeline-icon {
-    font-size: 2.5rem;
-    opacity: 0.9;
+.timeline-icon { 
+    font-size: 2.5rem; 
+    opacity: 0.9; 
+    color: white; /* FIX explícito */
 }
 
-.timeline-date {
-    text-align: right;
+.timeline-date { 
+    text-align: right; 
+    color: white; /* FIX explícito */
 }
+.timeline-date .year { font-size: 2.5rem; font-weight: 700; display: block; line-height: 1; }
+.timeline-date .month { font-size: 1.1rem; opacity: 0.9; }
+.timeline-body { padding: 30px; }
 
-.timeline-date .year {
-    font-size: 2.5rem;
-    font-weight: 700;
-    display: block;
-    line-height: 1;
-}
-
-.timeline-date .month {
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-.timeline-body {
-    padding: 30px;
-}
-
-/* --- HITOS (CORRECCIÓN DE CAPAS AQUÍ) --- */
+/* HITOS (Con corrección de Z-Index) */
 .milestone {
     display: flex;
     margin-bottom: 40px;
-    position: relative; /* Necesario para contener la línea absoluta */
-    z-index: 1; /* Establece contexto de apilamiento */
+    position: relative;
+    z-index: 1;
 }
+.milestone:last-child { margin-bottom: 0; }
 
-.milestone:last-child {
-    margin-bottom: 0;
-}
-
-/* LA LÍNEA (CAPA FONDO) */
 .milestone::after {
     content: '';
     position: absolute;
     top: 60px;
     bottom: -30px;
-    left: 25px; /* Posición original a la izquierda */
+    left: 25px;
     width: 2px;
     background-color: #e0e0e0;
-    z-index: -1; /* SOLUCIÓN: Se envía detrás de todo */
+    z-index: -1; /* Al fondo */
 }
+.milestone:last-child::after { display: none; }
 
-.milestone:last-child::after {
-    display: none;
-}
-
-/* EL ÍCONO (CAPA SUPERIOR) */
 .milestone-icon {
-    /* Flexbox properties para centrar el icono interno */
+    /* Dimensiones rígidas */
+    flex: 0 0 50px;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    
+    background-color: var(--color-primary);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    /* Dimensiones Rígidas (LA SOLUCIÓN AL ÓVALO) */
-    width: 50px;          /* NUEVO: Fuerza el ancho exacto */
-    height: 50px;         /* NUEVO: Fuerza el alto exacto */
-    min-width: 50px;      /* NUEVO: Prohíbe aplastamiento horizontal */
-    min-height: 50px;     /* NUEVO: Prohíbe aplastamiento vertical */
-    
-    /* Estilos visuales */
-    flex: 0 0 50px;       /* Mantiene la lógica flex original */
-    background-color: #004080;
-    color: white;
-    border-radius: 50%;   /* Esto crea el círculo */
+    border-radius: 50%;
     margin-right: 25px;
     position: relative;
     z-index: 2;
@@ -144,192 +79,29 @@ body {
     box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
 }
 
-/* EL CONTENIDO (CAPA SUPERIOR CON MÁSCARA) */
 .milestone-content {
     flex: 1;
     position: relative;
-    z-index: 2; /* SOLUCIÓN: Encima de la línea */
-    background-color: #fff; /* SOLUCIÓN: Fondo blanco actúa como máscara si la línea pasa por debajo */
+    z-index: 2;
+    background-color: var(--bg-white); /* Fondo para tapar línea */
 }
 
-.milestone-content h3 {
-    color: #004080;
-    font-size: 1.4rem;
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
+.milestone-content h3 { color: var(--color-primary); font-size: 1.4rem; margin-top: 0; margin-bottom: 10px; }
+.milestone-content p { margin-top: 0; color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
 
-.milestone-content p {
-    margin-top: 0;
-    color: #555;
-    font-size: 1rem;
-    line-height: 1.7;
-}
-
-/* Sección de Valores */
-.values-container {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    padding: 40px;
-    border: 1px solid rgba(0, 64, 128, 0.1);
-}
-
-.values-container h2 {
-    color: #003366;
-    font-weight: 700;
-    position: relative;
-    padding-bottom: 15px;
-    margin-bottom: 30px;
-}
-
-.values-container h2::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 3px;
-    background-color: #004080;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    border-radius: 2px;
-}
-
-.value-card {
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    padding: 30px 20px;
-    text-align: center;
-    height: 100%;
-    transition: all 0.3s ease;
-    border-top: 5px solid #004080;
-}
-
-.value-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.value-card i {
-    font-size: 2.5rem;
-    color: #004080;
-    margin-bottom: 15px;
-    display: block;
-}
-
-.value-card h3 {
-    color: #004080;
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.value-card p {
-    color: #555;
-    font-size: 0.95rem;
-    margin-bottom: 0;
-}
-
-/* Footer */
-footer {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-/* Media queries para responsividad */
-@media (max-width: 992px) {
-    .timeline-card, .values-container {
-        margin: 0 20px;
-    }
-}
-
+/* Responsive */
 @media (max-width: 768px) {
-    .resena-historica {
-        padding: 40px 0;
-    }
+    .timeline-header { flex-direction: column; text-align: center; }
+    .timeline-date { text-align: center; }
     
-    .hero-section {
-        margin-bottom: 40px;
-    }
+    .milestone { flex-direction: column; align-items: flex-start; }
+    .milestone::after { left: 25px; z-index: -1; }
     
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-    
-    .timeline-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .timeline-icon {
-        margin-bottom: 15px;
-    }
-    
-    .timeline-date {
-        text-align: center;
-    }
-    
-    /* CAMBIO: Mantenemos flex-direction row (original) para mantener ícono a la izq y texto a la derecha */
-    /* Si el espacio es muy reducido, dejamos que wrap */
-    .milestone {
-        flex-direction: column; /* Apilamos en móvil si es necesario */
-        align-items: flex-start; /* Alineamos a la izquierda */
-    }
-    
-    .milestone::after {
-        left: 25px; /* Mantenemos la línea alineada al centro del ícono */
-        z-index: -1; /* Siempre detrás */
-    }
-    
-    .milestone-icon {
-        margin-bottom: 20px;
-        margin-right: 0;
-        align-self: flex-start; /* Alineamos el ícono a la izquierda con la línea */
-    }
+    .milestone-icon { margin-right: 0; margin-bottom: 20px; align-self: flex-start; }
     
     .milestone-content {
-        padding-left: 10px; /* Separación sutil del borde */
-        background-color: rgba(255,255,255,0.9); /* Fondo semi-opaco para asegurar legibilidad sobre la línea */
+        padding-left: 10px;
+        background-color: rgba(255,255,255,0.9);
         width: 100%;
-    }
-    
-    .values-container {
-        padding: 30px 20px;
-    }
-    
-    .value-card {
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width: 576px) {
-    .resena-historica {
-        padding: 30px 0;
-    }
-    
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-    
-    .timeline-body, .values-container {
-        padding: 20px;
-    }
-    
-    .timeline-date .year {
-        font-size: 2rem;
-    }
-    
-    .value-card {
-        padding: 20px 15px;
     }
 }

@@ -1,26 +1,23 @@
-/* 📌 Contenedor general */
-.estructura-funcional {
-    padding: 40px 0;
-}
+/* estructura_funcional_style.css */
+
+.estructura-funcional { padding: 40px 0; }
 
 .section-grafico h1 {
-    color: #004080; /* Restaurado color original explícito */
+    color: var(--color-primary);
     font-weight: bold;
     margin-bottom: 40px;
 }
 
-/* 📌 Contenedor Mapa */
 .container-mapa {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: var(--bg-light);
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     overflow-x: auto;
 }
 
-/* ORGANIGRAMA */
 .organigrama {
     display: flex;
     flex-direction: column;
@@ -29,7 +26,6 @@
     min-width: 600px;
 }
 
-/* 📌 Estilos de los niveles */
 .nivel {
     display: flex;
     justify-content: center;
@@ -39,9 +35,9 @@
     margin-bottom: 20px;
 }
 
-/* CUADROS (Restaurado original + Override de Bootstrap) */
+/* Override de Bootstrap Cards para el organigrama */
 .organigrama .card {
-    background-color: #004080 !important; /* !important para ganar a Bootstrap */
+    background-color: var(--color-primary) !important;
     color: white !important;
     padding: 10px 20px;
     border-radius: 10px;
@@ -51,14 +47,13 @@
     max-width: 100%;
     position: relative;
     z-index: 2;
-    box-sizing: border-box;
-    border: none; /* Quitar borde de bootstrap */
+    border: none;
 }
 
-/* LÍNEAS (Código original intacto) */
+/* LÍNEAS CONECTORAS */
 .linea {
     width: 2px;
-    background-color: #004080;
+    background-color: var(--color-primary);
     position: absolute;
     top: 0;
     height: calc(70%);
@@ -70,11 +65,11 @@
 .nivel:nth-child(3) + .linea { display: none; }
 .nivel-4 + .linea { display: none; }
 
-.nivel:first-child::after {
+.nivel:first-child::after, .nivel:nth-child(3)::after {
     content: '';
     position: absolute;
     width: 2px;
-    background-color: #004080;
+    background-color: var(--color-primary);
     top: 100%;
     height: 20px;
     left: 50%;
@@ -82,50 +77,24 @@
     z-index: 1;
 }
 
-.nivel:nth-child(3)::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    background-color: #004080;
-    top: 100%;
-    height: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
-.linea-horizontal {
-    width: 250px;
+.linea-horizontal, .linea-horizontal-larga {
     height: 2px;
-    background-color: #004080;
+    background-color: var(--color-primary);
     position: relative;
     z-index: 1;
 }
+.linea-horizontal { width: 250px; }
+.linea-horizontal-larga { width: 150px; }
 
-.linea-horizontal-larga {
-    width: 150px;
-    height: 2px;
-    background-color: #004080;
-    position: relative;
-    z-index: 1;
-}
-
-/* 📌 AUXILIAR CONTABLE */
-.nivel-5 {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    padding-left: 14%;
-    position: relative;
-}
-
+/* Auxiliar Contable */
+.nivel-5 { display: flex; justify-content: flex-start; width: 100%; padding-left: 14%; position: relative; }
 .nivel-4 { position: relative; }
 
 .nivel-4::after {
     content: '';
     position: absolute;
     width: 2px;
-    background-color: #004080;
+    background-color: var(--color-primary);
     top: 50%;
     bottom: -20px;
     left: calc(14% + 100px);
@@ -136,14 +105,14 @@
     content: '';
     position: absolute;
     height: 2px;
-    background-color: #004080;
+    background-color: var(--color-primary);
     width: calc(36% - 100px);
     top: 50%;
     left: calc(14% + 100px);
     z-index: 1;
 }
 
-/* 📌 SECCIÓN INFERIOR (Estilos mejorados para los íconos) */
+/* Info Extra */
 .contenido-extra {
     margin-top: 50px;
     text-align: left;
@@ -153,129 +122,64 @@
     background-color: white;
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 64, 128, 0.1);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
 }
 
 .contenido-extra h2 {
-    color: #004080;
+    color: var(--color-primary);
     font-weight: bold;
     font-size: 1.8rem;
     margin-bottom: 20px;
     position: relative;
     text-align: center;
-    padding-bottom: 15px;
 }
-
 .contenido-extra h2::after {
     content: "";
     display: block;
     width: 80px;
     height: 3px;
-    background-color: #004080;
+    background-color: var(--color-primary);
     margin: 15px auto 0;
-    border-radius: 2px;
 }
 
-.contenido-extra h3 {
-    color: #004080;
-    font-weight: 600;
-    font-size: 1.5rem;
-    margin: 30px 0 15px;
-}
+.contenido-extra h3 { color: var(--color-primary); font-size: 1.5rem; margin: 30px 0 15px; }
+.contenido-extra p { color: var(--text-muted); margin-bottom: 15px; }
 
-.contenido-extra p {
-    color: #555;
-    margin-bottom: 15px;
-    font-size: 1.05rem;
-    line-height: 1.6;
-}
-
-/* Estilo para las descripciones de órganos con ICONOS VIVOS */
 .organ-description {
     display: flex;
-    align-items: center; /* Alineado al centro verticalmente */
+    align-items: center;
     margin-bottom: 30px;
-    background-color: #f8f9fa;
+    background-color: var(--bg-light);
     border-radius: 10px;
     padding: 25px;
-    border-left: 5px solid #004080;
+    border-left: 5px solid var(--color-primary);
     transition: all 0.3s ease;
 }
+.organ-description:hover { box-shadow: var(--shadow-sm); transform: translateY(-3px); }
 
-.organ-description:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
-}
-
-/* NUEVO: Contenedor de ícono tipo círculo */
 .icon-container {
     flex: 0 0 70px;
     height: 70px;
     width: 70px;
-    background-color: #e6f0ff; /* Fondo azul claro */
-    border-radius: 50%; /* Círculo */
+    background-color: var(--bg-accent);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    color: #004080;
-    margin-right: 25px; /* Separación con el texto */
-    padding-top: 0; /* Quitamos padding top del original */
-    box-shadow: 0 4px 8px rgba(0, 64, 128, 0.1);
+    color: var(--color-primary);
+    margin-right: 25px;
 }
 
-.organ-description .content {
-    flex: 1;
-}
-
-.organ-description .content p {
-    margin-top: 0;
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
-.organ-description .content ul {
-    padding-left: 20px;
-    margin: 0;
-}
-
-.organ-description .content li {
-    margin-bottom: 5px;
-    position: relative;
-    padding-left: 5px;
-}
-
-/* Media queries */
-@media (max-width: 992px) {
-    .contenido-extra {
-        max-width: 95%;
-        padding: 25px;
-    }
-}
+.organ-description .content { flex: 1; }
 
 @media (max-width: 768px) {
     .container-mapa { padding: 15px; }
-    
-    .card {
-        width: 180px;
-        padding: 8px 15px;
-        font-size: 14px;
-    }
-    
+    .card { width: 180px; font-size: 14px; }
     .linea-horizontal, .linea-horizontal-larga { width: 120px; }
-    
     .nivel-5 { padding-left: 10%; }
-    
     .nivel-4::after { left: calc(10% + 90px); }
-
-    .organ-description {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .icon-container {
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
+    .organ-description { flex-direction: column; text-align: center; }
+    .icon-container { margin-right: 0; margin-bottom: 15px; }
 }

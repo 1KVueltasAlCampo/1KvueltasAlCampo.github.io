@@ -1,107 +1,62 @@
 /* contactanos_style.css */
 
-/* Estilos generales */
-body {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f7fa;
-    margin: 0;
-    padding: 0;
-}
-
-/* Sección principal */
 .contactanos {
     padding: 60px 0;
-    background-image: linear-gradient(to bottom, #f5f7fa, #e4e7f0);
-}
-
-/* Sección Hero */
-.hero-section {
-    margin-bottom: 60px;
-}
-
-.hero-section h1 {
-    color: #003366;
-    margin-bottom: 15px;
-}
-
-.hero-section .badge {
-    background-color: #004080;
-    font-size: 0.9rem;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-weight: 500;
-}
-
-.decorative-line {
-    width: 80px;
-    height: 4px;
-    background-color: #004080;
-    margin: 20px auto 25px;
-    border-radius: 2px;
-}
-
-.hero-section .lead {
-    font-size: 1.2rem;
-    margin-bottom: 0;
+    background-image: linear-gradient(to bottom, var(--bg-body), #e4e7f0);
 }
 
 /* Tarjeta de Contacto */
 .contacto-card {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
     overflow: hidden;
     position: relative;
-    border: 1px solid rgba(0, 64, 128, 0.1);
+    border: 1px solid var(--border-light);
 }
 
 .contacto-header {
-    background-image: linear-gradient(135deg, #004080, #0066b2);
+    background-image: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
     padding: 25px;
     color: white;
     display: flex;
     align-items: center;
 }
 
-.contacto-icon {
-    font-size: 2.5rem;
-    opacity: 0.9;
-    margin-right: 20px;
+/* FIX COLOR */
+.contacto-icon { 
+    font-size: 2.5rem; 
+    opacity: 0.9; 
+    margin-right: 20px; 
+    color: white;
 }
 
-.contacto-title h2 {
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 600;
+.contacto-title h2 { 
+    margin: 0; 
+    font-size: 1.8rem; 
+    color: white; /* FIX */
 }
+.contacto-body { padding: 30px; }
 
-.contacto-body {
-    padding: 30px;
-}
-
-/* Ítems de información de contacto */
-.contacto-info {
-    margin-bottom: 30px;
-}
+/* Ítems de información */
+.contacto-info { margin-bottom: 30px; }
 
 .info-item {
     display: flex;
     margin-bottom: 25px;
-    align-items: center; /* Asegura alineación vertical centrada */
+    align-items: center;
 }
 
-/* --- FIX: CÍRCULOS PERFECTOS EN MÓVIL --- */
+/* FIX CÍRCULOS PERFECTOS */
 .info-icon {
     /* Dimensiones Rígidas */
     flex: 0 0 50px;
     width: 50px;
     height: 50px;
-    min-width: 50px; /* Prohíbe aplastamiento horizontal */
-    min-height: 50px; /* Prohíbe aplastamiento vertical */
+    min-width: 50px;
+    min-height: 50px;
     
-    background-color: #004080;
+    background-color: var(--color-primary);
     color: white;
     display: flex;
     align-items: center;
@@ -112,60 +67,40 @@ body {
     box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
 }
 
-.info-content {
-    flex: 1;
-}
-
+.info-content { flex: 1; }
 .info-content h3 {
-    color: #004080;
+    color: var(--color-primary);
     font-size: 1.3rem;
     margin-top: 0;
     margin-bottom: 5px;
-    font-weight: 600;
 }
+.info-content p { margin: 0; color: var(--text-muted); font-size: 1rem; }
 
-.info-content p {
-    margin: 0;
-    color: #555;
-    font-size: 1rem;
-}
-
-/* Descripción y formulario */
+/* Descripción */
 .contacto-descripcion h3 {
-    color: #003366;
+    color: var(--color-primary-dark);
     font-size: 1.4rem;
     margin-top: 0;
     margin-bottom: 15px;
     display: flex;
     align-items: center;
-    font-weight: 600;
 }
+.contacto-descripcion h3 i { margin-right: 10px; color: var(--color-primary); }
+.contacto-descripcion p { color: var(--text-muted); margin-bottom: 25px; font-size: 1rem; }
 
-.contacto-descripcion h3 i {
-    margin-right: 10px;
-    color: #004080;
-}
-
-.contacto-descripcion p {
-    color: #555;
-    margin-bottom: 25px;
-    font-size: 1rem;
-    line-height: 1.7;
-}
-
+/* Formulario */
 .formulario-contacto {
-    background-color: #f5f7fa;
+    background-color: var(--bg-body);
     border-radius: 10px;
     padding: 20px;
     border: 1px solid #e0e0e0;
 }
 
 .formulario-contacto h4 {
-    color: #004080;
+    color: var(--color-primary);
     font-size: 1.1rem;
     margin-top: 0;
     margin-bottom: 20px;
-    font-weight: 600;
     text-align: center;
 }
 
@@ -178,11 +113,11 @@ body {
 
 .formulario-contacto .form-control:focus {
     box-shadow: 0 0 0 3px rgba(0, 64, 128, 0.15);
-    border-color: #004080;
+    border-color: var(--color-primary);
 }
 
 .formulario-contacto .btn-primary {
-    background-color: #004080;
+    background-color: var(--color-primary);
     border: none;
     padding: 10px 30px;
     font-weight: 500;
@@ -192,116 +127,54 @@ body {
 }
 
 .formulario-contacto .btn-primary:hover {
-    background-color: #003366;
+    background-color: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
 }
 
-/* Sección de Ubicación */
+/* Ubicación */
 .ubicacion-card {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
     padding: 40px;
-    border: 1px solid rgba(0, 64, 128, 0.1);
+    border: 1px solid var(--border-light);
 }
 
 .ubicacion-info h2 {
-    color: #003366;
+    color: var(--color-primary-dark);
     font-size: 1.8rem;
-    font-weight: 600;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.ubicacion-info h2 i {
-    color: #004080;
-    margin-right: 10px;
-}
+.ubicacion-info h2 i { color: var(--color-primary); margin-right: 10px; }
 
 .mapa-container {
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-sm);
 }
 
-/* Footer */
-footer {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-/* Media queries para responsividad */
+/* Responsive */
 @media (max-width: 992px) {
-    .contacto-card, .ubicacion-card {
-        margin: 0 20px;
-    }
+    .contacto-card, .ubicacion-card { margin: 0 20px; }
 }
 
 @media (max-width: 768px) {
-    .contactanos {
-        padding: 40px 0;
-    }
+    .contactanos { padding: 40px 0; }
+    .contacto-header { flex-direction: column; text-align: center; }
+    .contacto-icon { margin-bottom: 15px; margin-right: 0; }
     
-    .hero-section {
-        margin-bottom: 40px;
-    }
+    .info-item { flex-direction: column; align-items: center; text-align: center; margin-bottom: 30px; }
+    .info-icon { margin-bottom: 15px; margin-right: 0; }
     
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-    
-    .contacto-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .contacto-icon {
-        margin-bottom: 15px;
-        margin-right: 0;
-    }
-    
-    .info-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    
-    .info-icon {
-        margin-bottom: 15px;
-        margin-right: 0;
-    }
-    
-    .ubicacion-card {
-        padding: 30px 20px;
-    }
+    .ubicacion-card { padding: 30px 20px; }
 }
 
 @media (max-width: 576px) {
-    .contactanos {
-        padding: 30px 0;
-    }
-    
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-    
-    .contacto-body, .ubicacion-card {
-        padding: 20px;
-    }
-    
-    .formulario-contacto {
-        padding: 15px;
-    }
+    .contactanos { padding: 30px 0; }
+    .contacto-body, .ubicacion-card { padding: 20px; }
+    .formulario-contacto { padding: 15px; }
 }

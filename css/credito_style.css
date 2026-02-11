@@ -1,98 +1,44 @@
-/* Estilos generales */
-body {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f7fa;
-    margin: 0;
-    padding: 0;
-}
+/* credito_style.css */
 
-/* Sección principal */
 .credito-page {
     padding: 60px 0;
-    background-image: linear-gradient(to bottom, #f5f7fa, #e4e7f0);
+    background-image: linear-gradient(to bottom, var(--bg-body), #e4e7f0);
 }
 
-/* Sección Hero */
-.hero-section {
-    margin-bottom: 60px;
-}
-
-.hero-section h1 {
-    color: #003366;
-    margin-bottom: 15px;
-}
-
-.hero-section .badge {
-    background-color: #004080;
-    font-size: 0.9rem;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-weight: 500;
-}
-
-.decorative-line {
-    width: 80px;
-    height: 4px;
-    background-color: #004080;
-    margin: 20px auto 25px;
-    border-radius: 2px;
-}
-
-.small-decorative-line {
-    width: 60px;
-    height: 3px;
-    background-color: #004080;
-    margin: 15px auto 30px;
-    border-radius: 2px;
-}
-
-.hero-section .lead {
-    font-size: 1.2rem;
-    margin-bottom: 0;
-}
-
-/* Tarjeta de Líneas de Crédito */
+/* Tarjeta de Líneas */
 .lineas-card {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
     overflow: hidden;
     position: relative;
-    border: 1px solid rgba(0, 64, 128, 0.1);
+    border: 1px solid var(--border-light);
     margin-bottom: 30px;
 }
 
 .lineas-header {
-    background-image: linear-gradient(135deg, #004080, #0066b2);
+    background-image: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
     padding: 25px;
     color: white;
     display: flex;
     align-items: center;
 }
 
-.lineas-icon {
-    font-size: 2.5rem;
-    opacity: 0.9;
-    margin-right: 20px;
+/* FIX COLOR */
+.lineas-icon { 
+    font-size: 2.5rem; 
+    opacity: 0.9; 
+    margin-right: 20px; 
+    color: white;
 }
 
-.lineas-title h2 {
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 600;
+.lineas-title h2 { 
+    margin: 0; 
+    font-size: 1.8rem; 
+    color: white; /* FIX */
 }
-
-.lineas-body {
-    padding: 30px;
-}
-
-.lineas-intro {
-    font-size: 1.1rem;
-    color: #444;
-    margin-bottom: 25px;
-}
+.lineas-body { padding: 30px; }
+.lineas-intro { font-size: 1.1rem; color: #444; margin-bottom: 25px; }
 
 /* Items de Líneas */
 .linea-item {
@@ -102,23 +48,17 @@ body {
     padding-bottom: 30px;
     border-bottom: 1px solid #eaeaea;
 }
+.linea-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 
-.linea-item:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-}
-
-/* FIX CÍRCULOS PERFECTOS: Ícono de línea */
+/* FIX CÍRCULOS PERFECTOS */
 .linea-icon {
-    /* Dimensiones rígidas */
     flex: 0 0 60px;
     width: 60px;
     height: 60px;
     min-width: 60px;
     min-height: 60px;
     
-    background-color: #004080;
+    background-color: var(--color-primary);
     color: white;
     display: flex;
     align-items: center;
@@ -129,62 +69,35 @@ body {
     box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
 }
 
-.linea-content {
-    flex: 1;
-}
-
-.linea-content h3 {
-    color: #003366;
-    font-size: 1.4rem;
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.linea-content p {
-    margin: 0;
-    color: #555;
-    font-size: 1rem;
-    line-height: 1.7;
-}
+.linea-content { flex: 1; }
+.linea-content h3 { color: var(--color-primary-dark); font-size: 1.4rem; margin-top: 0; margin-bottom: 10px; }
+.linea-content p { margin: 0; color: var(--text-muted); font-size: 1rem; }
 
 /* Tarjetas de Detalle */
 .detalle-card {
-    background-color: white;
-    border-radius: 15px;
+    background-color: var(--bg-white);
+    border-radius: var(--radius-card);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
     overflow: hidden;
     height: 100%;
-    border: 1px solid rgba(0, 64, 128, 0.1);
+    border: 1px solid var(--border-light);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .detalle-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-hover);
 }
 
-.detalle-header {
-    padding: 25px 20px;
-    text-align: center;
-    position: relative;
-}
+.detalle-header { padding: 25px 20px; text-align: center; position: relative; }
 
-.libre-inversion .detalle-header {
-    background-color: #f0f7ff;
-}
+/* Colores específicos */
+.libre-inversion .detalle-header { background-color: #f0f7ff; }
+.vivienda .detalle-header { background-color: #f0fff7; }
+.educacion .detalle-header { background-color: #fff7f0; }
 
-.vivienda .detalle-header {
-    background-color: #f0fff7;
-}
-
-.educacion .detalle-header {
-    background-color: #fff7f0;
-}
-
-/* FIX CÍRCULOS PERFECTOS: Ícono de detalle */
+/* FIX CÍRCULOS PERFECTOS */
 .detalle-icon {
-    /* Dimensiones rígidas */
     width: 70px;
     height: 70px;
     min-width: 70px;
@@ -200,92 +113,40 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.libre-inversion .detalle-icon {
-    color: #0066cc;
-}
+.libre-inversion .detalle-icon { color: #0066cc; }
+.vivienda .detalle-icon { color: #00a67e; }
+.educacion .detalle-icon { color: #e67e00; }
 
-.vivienda .detalle-icon {
-    color: #00a67e;
-}
+.detalle-header h3 { color: var(--color-primary-dark); margin: 0; font-size: 1.5rem; }
+.detalle-body { padding: 25px 20px; }
+.detalle-body p { color: var(--text-muted); margin-bottom: 20px; min-height: 80px; }
 
-.educacion .detalle-icon {
-    color: #e67e00;
-}
+.detalle-features { padding-top: 10px; }
+.feature-item { display: flex; align-items: center; margin-bottom: 12px; }
+.feature-item:last-child { margin-bottom: 0; }
+.feature-item i { margin-right: 10px; }
+.libre-inversion .feature-item i { color: #0066cc; }
+.vivienda .feature-item i { color: #00a67e; }
+.educacion .feature-item i { color: #e67e00; }
+.feature-item span { color: #444; }
 
-.detalle-header h3 {
-    color: #003366;
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.detalle-body {
-    padding: 25px 20px;
-}
-
-.detalle-body p {
-    color: #555;
-    margin-bottom: 20px;
-    min-height: 80px;
-}
-
-.detalle-features {
-    padding-top: 10px;
-}
-
-.feature-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.feature-item:last-child {
-    margin-bottom: 0;
-}
-
-.feature-item i {
-    margin-right: 10px;
-    color: #0066b2;
-}
-
-.libre-inversion .feature-item i {
-    color: #0066cc;
-}
-
-.vivienda .feature-item i {
-    color: #00a67e;
-}
-
-.educacion .feature-item i {
-    color: #e67e00;
-}
-
-.feature-item span {
-    color: #444;
-}
-
-/* Sección de Ventajas */
+/* Ventajas */
 .ventajas-card {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
     padding: 40px;
-    border: 1px solid rgba(0, 64, 128, 0.1);
+    border: 1px solid var(--border-light);
 }
 
 .ventajas-card h2 {
-    color: #003366;
+    color: var(--color-primary-dark);
     font-size: 1.8rem;
-    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.ventajas-card h2 i {
-    color: #004080;
-    margin-right: 10px;
-}
+.ventajas-card h2 i { color: var(--color-primary); margin-right: 10px; }
 
 .ventaja-item {
     display: flex;
@@ -295,22 +156,18 @@ body {
     border-radius: 10px;
     transition: all 0.3s ease;
 }
+.ventaja-item:hover { background-color: var(--bg-body); }
 
-.ventaja-item:hover {
-    background-color: #f0f4f8;
-}
-
-/* FIX CÍRCULOS PERFECTOS: Ícono de ventajas */
+/* FIX CÍRCULOS PERFECTOS */
 .ventaja-icon {
-    /* Dimensiones rígidas */
     flex: 0 0 60px;
     width: 60px;
     height: 60px;
     min-width: 60px;
     min-height: 60px;
     
-    background-color: #e4f0fa;
-    color: #004080;
+    background-color: var(--bg-accent);
+    color: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -320,112 +177,32 @@ body {
     transition: all 0.3s ease;
 }
 
-.ventaja-item:hover .ventaja-icon {
-    background-color: #004080;
-    color: white;
-}
+.ventaja-item:hover .ventaja-icon { background-color: var(--color-primary); color: white; }
+.ventaja-content { flex: 1; }
+.ventaja-content h4 { color: var(--color-primary-dark); font-size: 1.2rem; margin-top: 0; margin-bottom: 8px; }
+.ventaja-content p { color: var(--text-muted); margin: 0; }
 
-.ventaja-content {
-    flex: 1;
-}
-
-.ventaja-content h4 {
-    color: #003366;
-    font-size: 1.2rem;
-    margin-top: 0;
-    margin-bottom: 8px;
-    font-weight: 600;
-}
-
-.ventaja-content p {
-    color: #555;
-    margin: 0;
-}
-
-/* Footer */
-footer {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-/* Media queries para responsividad */
+/* Responsive */
 @media (max-width: 992px) {
-    .lineas-card, .ventajas-card {
-        margin: 0 20px 30px;
-    }
+    .lineas-card, .ventajas-card { margin: 0 20px 30px; }
 }
 
 @media (max-width: 768px) {
-    .credito-page {
-        padding: 40px 0;
-    }
+    .credito-page { padding: 40px 0; }
+    .lineas-header { flex-direction: column; text-align: center; }
+    .lineas-icon { margin-bottom: 15px; margin-right: 0; }
     
-    .hero-section {
-        margin-bottom: 40px;
-    }
+    .linea-item { flex-direction: column; align-items: center; text-align: center; }
+    .linea-icon { margin-bottom: 20px; margin-right: 0; }
     
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
+    .ventajas-card { padding: 30px 20px; }
+    .ventaja-item { flex-direction: column; text-align: center; }
+    .ventaja-icon { margin-bottom: 15px; margin-right: 0; }
     
-    .lineas-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .lineas-icon {
-        margin-bottom: 15px;
-        margin-right: 0;
-    }
-    
-    .linea-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .linea-icon {
-        margin-bottom: 20px;
-        margin-right: 0;
-    }
-    
-    .ventajas-card {
-        padding: 30px 20px;
-    }
-    
-    .ventaja-item {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .ventaja-icon {
-        margin-bottom: 15px;
-        margin-right: 0;
-    }
-    
-    .detalle-body p {
-        min-height: auto;
-    }
+    .detalle-body p { min-height: auto; }
 }
 
 @media (max-width: 576px) {
-    .credito-page {
-        padding: 30px 0;
-    }
-    
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-    
-    .lineas-body, .ventajas-card {
-        padding: 20px;
-    }
+    .credito-page { padding: 30px 0; }
+    .lineas-body, .ventajas-card { padding: 20px; }
 }

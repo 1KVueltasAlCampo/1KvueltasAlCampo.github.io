@@ -1,97 +1,53 @@
-/* Estilos generales */
-body {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f7fa;
-    margin: 0;
-    padding: 0;
-}
+/* quien_puede_ser_asociado_style.css */
 
-/* Sección principal */
 .quien-puede-ser-asociado {
     padding: 60px 0;
-    background-image: linear-gradient(to bottom, #f5f7fa, #e4e7f0);
+    background-image: linear-gradient(to bottom, var(--bg-body), #e4e7f0);
 }
 
-/* Sección Hero */
-.hero-section {
-    margin-bottom: 60px;
-}
-
-.hero-section h1 {
-    color: #003366;
-    margin-bottom: 15px;
-}
-
-.hero-section .badge {
-    background-color: #004080;
-    font-size: 0.9rem;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-weight: 500;
-}
-
-.decorative-line {
-    width: 80px;
-    height: 4px;
-    background-color: #004080;
-    margin: 20px auto 25px;
-    border-radius: 2px;
-}
-
-.hero-section .lead {
-    font-size: 1.2rem;
-    margin-bottom: 0;
-}
-
-/* Tarjeta de Requisitos */
+/* Tarjeta Requisitos */
 .requisitos-card {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
     overflow: hidden;
     position: relative;
-    border: 1px solid rgba(0, 64, 128, 0.1);
+    border: 1px solid var(--border-light);
 }
 
 .requisitos-header {
-    background-image: linear-gradient(135deg, #004080, #0066b2);
+    background-image: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
     padding: 25px;
     color: white;
     display: flex;
     align-items: center;
 }
 
-.requisitos-icon {
-    font-size: 2.5rem;
-    opacity: 0.9;
+/* FIX COLOR: Forzamos blanco porque el global h2 impone azul */
+.requisitos-icon { 
+    font-size: 2.5rem; 
+    opacity: 0.9; 
     margin-right: 20px;
+    color: white; /* Asegurado */
 }
 
-.requisitos-title h2 {
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 600;
+.requisitos-title h2 { 
+    margin: 0; 
+    font-size: 1.8rem; 
+    color: white; /* FIX: Sobreescribe el estilo global */
 }
+.requisitos-body { padding: 30px; }
 
-.requisitos-body {
-    padding: 30px;
-}
-
-/* Items de Requisitos */
+/* Items */
 .requisito-item {
     display: flex;
     margin-bottom: 40px;
-    position: relative; /* Contexto de apilamiento para la línea */
+    position: relative;
     z-index: 1; 
 }
+.requisito-item:last-child { margin-bottom: 0; }
 
-.requisito-item:last-child {
-    margin-bottom: 0;
-}
-
-/* FIX: Línea vertical al fondo */
+/* Línea conectora */
 .requisito-item::after {
     content: '';
     position: absolute;
@@ -100,23 +56,19 @@ body {
     left: 25px;
     width: 2px;
     background-color: #e0e0e0;
-    z-index: -1; /* Detrás de todo */
+    z-index: -1;
 }
+.requisito-item:last-child::after { display: none; }
 
-.requisito-item:last-child::after {
-    display: none;
-}
-
-/* FIX: Íconos Vivos (Círculo perfecto) */
+/* FIX CÍRCULOS PERFECTOS */
 .requisito-icon {
-    /* Dimensiones forzadas para evitar óvalos */
     flex: 0 0 50px;
     width: 50px;
     height: 50px;
     min-width: 50px;
     min-height: 50px;
     
-    background-color: #004080;
+    background-color: var(--color-primary);
     color: white;
     display: flex;
     align-items: center;
@@ -124,47 +76,34 @@ body {
     border-radius: 50%;
     margin-right: 25px;
     position: relative;
-    z-index: 2; /* Encima de la línea */
+    z-index: 2;
     font-size: 1.4rem;
     box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
 }
 
-/* FIX: Contenido con fondo para tapar línea si es necesario */
 .requisito-content {
     flex: 1;
     position: relative;
     z-index: 1;
-    background-color: #fff; /* Fondo blanco */
-    padding-left: 5px; /* Un poco de aire */
+    background-color: var(--bg-white);
+    padding-left: 5px;
 }
 
-.requisito-content h3 {
-    color: #004080;
-    font-size: 1.4rem;
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
+.requisito-content h3 { color: var(--color-primary); font-size: 1.4rem; margin-top: 0; margin-bottom: 10px; }
+.requisito-content p { margin-top: 0; color: var(--text-muted); font-size: 1rem; }
 
-.requisito-content p {
-    margin-top: 0;
-    color: #555;
-    font-size: 1rem;
-    line-height: 1.7;
-}
-
-/* Sección de Beneficios */
+/* Beneficios */
 .beneficios-container {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
     padding: 40px;
-    border: 1px solid rgba(0, 64, 128, 0.1);
+    border: 1px solid var(--border-light);
 }
 
 .beneficios-container h2 {
-    color: #003366;
-    font-weight: 700;
+    color: var(--color-primary-dark);
+    font-size: 1.8rem;
     position: relative;
     padding-bottom: 15px;
     margin-bottom: 30px;
@@ -175,7 +114,7 @@ body {
     display: block;
     width: 60px;
     height: 3px;
-    background-color: #004080;
+    background-color: var(--color-primary);
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -184,176 +123,80 @@ body {
 }
 
 .beneficio-card {
-    background-color: #f8f9fa;
+    background-color: var(--bg-light);
     border-radius: 10px;
     padding: 30px 20px;
     text-align: center;
     height: 100%;
     transition: all 0.3s ease;
-    border-top: 5px solid #004080;
+    border-top: 5px solid var(--color-primary);
 }
 
 .beneficio-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-hover);
 }
 
-/* FIX: Íconos de Beneficios también vivos */
 .beneficio-card i {
     font-size: 2.5rem;
-    color: #004080;
+    color: var(--color-primary);
     margin-bottom: 15px;
-    display: inline-flex; /* Para centrar si añadimos fondo */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    /* Opcional: Si quieres círculos aquí también, descomenta abajo */
-    /* width: 70px;
-    height: 70px;
-    background-color: #e6f0ff;
-    border-radius: 50%;
-    */
 }
 
-.beneficio-card h3 {
-    color: #004080;
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
+.beneficio-card h3 { color: var(--color-primary); font-size: 1.3rem; margin-bottom: 15px; }
+.beneficio-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0; }
 
-.beneficio-card p {
-    color: #555;
-    font-size: 0.95rem;
-    margin-bottom: 0;
-}
-
-/* CTA Section */
+/* CTA */
 .cta-card {
-    background-image: linear-gradient(135deg, #004080, #0066b2);
+    background-image: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
     color: white;
-    border-radius: 15px;
+    border-radius: var(--radius-card);
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.cta-card h2 {
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.8rem;
-}
-
-.cta-card p {
-    opacity: 0.9;
-    margin-bottom: 0;
-    font-size: 1.1rem;
-}
+.cta-card h2 { color: white; margin-bottom: 15px; }
+.cta-card p { opacity: 0.9; margin-bottom: 0; font-size: 1.1rem; }
 
 .cta-card .btn-primary {
     background-color: white;
-    color: #004080;
+    color: var(--color-primary);
     border: none;
-    padding: 12px 30px;
     font-weight: 600;
-    transition: all 0.3s ease;
 }
-
 .cta-card .btn-primary:hover {
     background-color: #f0f0f0;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer */
-footer {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-/* Media queries para responsividad */
+/* Responsive */
 @media (max-width: 992px) {
-    .requisitos-card, .beneficios-container, .cta-card {
-        margin: 0 20px;
-    }
+    .requisitos-card, .beneficios-container, .cta-card { margin: 0 20px; }
 }
 
 @media (max-width: 768px) {
-    .quien-puede-ser-asociado {
-        padding: 40px 0;
-    }
+    .quien-puede-ser-asociado { padding: 40px 0; }
+    .requisitos-header { flex-direction: column; text-align: center; }
+    .requisitos-icon { margin-bottom: 15px; margin-right: 0; }
     
-    .hero-section {
-        margin-bottom: 40px;
-    }
-    
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-    
-    .requisitos-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .requisitos-icon {
-        margin-bottom: 15px;
-        margin-right: 0;
-    }
-    
-    /* Mantenemos layout de fila en móvil para evitar ruptura visual */
-    /* Pero aseguramos que el ícono esté arriba si el texto es muy largo */
-    .requisito-item {
-        flex-direction: column;
-        align-items: flex-start; /* Alineado a la izquierda */
-    }
-    
-    /* Línea conectora alineada al ícono (izquierda) */
-    .requisito-item::after {
-        left: 25px; 
-        z-index: -1;
-    }
+    .requisito-item { flex-direction: column; align-items: flex-start; }
+    .requisito-item::after { left: 25px; z-index: -1; }
     
     .requisito-icon {
         margin-bottom: 20px;
         margin-right: 0;
-        /* Asegurar posición relativa para z-index */
         position: relative;
         z-index: 2;
     }
     
-    .requisito-content {
-        width: 100%; /* Ocupar todo el ancho */
-        padding-left: 10px; /* Separación de la línea */
-    }
-    
-    .beneficios-container {
-        padding: 30px 20px;
-    }
-    
-    .cta-card {
-        padding: 30px 20px;
-        text-align: center;
-    }
+    .requisito-content { width: 100%; padding-left: 10px; }
+    .beneficios-container, .cta-card { padding: 30px 20px; text-align: center; }
 }
 
 @media (max-width: 576px) {
-    .quien-puede-ser-asociado {
-        padding: 30px 0;
-    }
-    
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-    
-    .requisitos-body, .beneficios-container, .cta-card {
-        padding: 20px;
-    }
+    .quien-puede-ser-asociado { padding: 30px 0; }
+    .requisitos-body, .beneficios-container, .cta-card { padding: 20px; }
 }

@@ -1,92 +1,43 @@
-/* Estilos generales */
-body {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f7fa;
-    margin: 0;
-    padding: 0;
-}
-
 /* Sección principal */
 .ahorro-page {
     padding: 60px 0;
-    background-image: linear-gradient(to bottom, #f5f7fa, #e4e7f0);
-}
-
-/* Sección Hero */
-.hero-section {
-    margin-bottom: 60px;
-}
-
-.hero-section h1 {
-    color: #003366;
-    margin-bottom: 15px;
-}
-
-.hero-section .badge {
-    background-color: #004080;
-    font-size: 0.9rem;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-weight: 500;
-}
-
-.decorative-line {
-    width: 80px;
-    height: 4px;
-    background-color: #004080;
-    margin: 20px auto 25px;
-    border-radius: 2px;
-}
-
-.small-decorative-line {
-    width: 60px;
-    height: 3px;
-    background-color: #004080;
-    margin: 15px auto 30px;
-    border-radius: 2px;
-}
-
-.hero-section .lead {
-    font-size: 1.2rem;
-    margin-bottom: 0;
+    background-image: linear-gradient(to bottom, var(--bg-body), #e4e7f0);
 }
 
 /* Tarjeta de Modalidades */
 .modalidades-card {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
     overflow: hidden;
     position: relative;
-    border: 1px solid rgba(0, 64, 128, 0.1);
+    border: 1px solid var(--border-light);
     margin-bottom: 30px;
 }
 
 .modalidad-header {
-    background-image: linear-gradient(135deg, #004080, #0066b2);
+    background-image: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
     padding: 25px;
     color: white;
     display: flex;
     align-items: center;
 }
 
+/* FIX COLOR */
 .modalidad-icon {
     font-size: 2.5rem;
     opacity: 0.9;
     margin-right: 20px;
+    color: white;
 }
 
 .modalidad-title h2 {
     margin: 0;
     font-size: 1.8rem;
-    font-weight: 600;
+    color: white; /* FIX */
 }
 
-.modalidad-body {
-    padding: 30px;
-}
+.modalidad-body { padding: 30px; }
 
 /* Items de Modalidad */
 .modalidad-item {
@@ -107,16 +58,15 @@ body {
     align-items: flex-start;
 }
 
-/* FIX CÍRCULOS PERFECTOS: Ícono pequeño de lista */
+/* Ícono pequeño de lista (Con Fix Geometría) */
 .modalidad-icon-small {
-    /* Dimensiones rígidas para evitar óvalos */
     flex: 0 0 60px;
     width: 60px;
     height: 60px;
     min-width: 60px;
     min-height: 60px;
     
-    background-color: #004080;
+    background-color: var(--color-primary);
     color: white;
     display: flex;
     align-items: center;
@@ -127,46 +77,41 @@ body {
     box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
 }
 
-.modalidad-info {
-    flex: 1;
-}
+.modalidad-info { flex: 1; }
 
 .modalidad-info h3 {
-    color: #004080;
+    color: var(--color-primary);
     font-size: 1.4rem;
     margin-top: 0;
     margin-bottom: 15px;
-    font-weight: 600;
 }
 
 .modalidad-info p {
     margin-top: 0;
-    color: #555;
+    color: var(--text-muted);
     font-size: 1rem;
-    line-height: 1.7;
     margin-bottom: 0;
 }
 
-/* Sección de Beneficios */
+/* Beneficios */
 .beneficios-card {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
     padding: 40px;
-    border: 1px solid rgba(0, 64, 128, 0.1);
+    border: 1px solid var(--border-light);
 }
 
 .beneficios-card h2 {
-    color: #003366;
+    color: var(--color-primary-dark);
     font-size: 1.8rem;
-    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .beneficios-card h2 i {
-    color: #004080;
+    color: var(--color-primary);
     margin-right: 10px;
 }
 
@@ -179,24 +124,20 @@ body {
 }
 
 .beneficio-item:hover {
-    background-color: #f0f4f8;
+    background-color: var(--bg-light);
     transform: translateY(-5px);
 }
 
-/* FIX CÍRCULOS PERFECTOS: Ícono de beneficios */
 .beneficio-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    
-    /* Dimensiones rígidas */
     width: 70px;
     height: 70px;
     min-width: 70px;
     min-height: 70px;
-    
-    background-color: #e4f0fa;
-    color: #004080;
+    background-color: var(--bg-accent);
+    color: var(--color-primary);
     border-radius: 50%;
     margin-bottom: 15px;
     font-size: 1.8rem;
@@ -204,92 +145,33 @@ body {
 }
 
 .beneficio-item:hover .beneficio-icon {
-    background-color: #004080;
+    background-color: var(--color-primary);
     color: white;
 }
 
 .beneficio-item h4 {
-    color: #003366;
+    color: var(--color-primary-dark);
     font-size: 1.2rem;
     margin-bottom: 10px;
-    font-weight: 600;
 }
 
-.beneficio-item p {
-    color: #555;
-    margin-bottom: 0;
-}
+.beneficio-item p { color: var(--text-muted); margin-bottom: 0; }
 
-/* Footer */
-footer {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-/* Media queries para responsividad */
+/* Responsive */
 @media (max-width: 992px) {
-    .modalidades-card, .beneficios-card {
-        margin: 0 20px 30px;
-    }
+    .modalidades-card, .beneficios-card { margin: 0 20px 30px; }
 }
 
 @media (max-width: 768px) {
-    .ahorro-page {
-        padding: 40px 0;
-    }
-    
-    .hero-section {
-        margin-bottom: 40px;
-    }
-    
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-    
-    .modalidad-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .modalidad-icon {
-        margin-bottom: 15px;
-        margin-right: 0;
-    }
-    
-    .modalidad-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .modalidad-icon-small {
-        margin-bottom: 20px;
-        margin-right: 0;
-    }
-    
-    .beneficios-card {
-        padding: 30px 20px;
-    }
+    .ahorro-page { padding: 40px 0; }
+    .modalidad-header { flex-direction: column; text-align: center; }
+    .modalidad-icon { margin-bottom: 15px; margin-right: 0; }
+    .modalidad-content { flex-direction: column; align-items: center; text-align: center; }
+    .modalidad-icon-small { margin-bottom: 20px; margin-right: 0; }
+    .beneficios-card { padding: 30px 20px; }
 }
 
 @media (max-width: 576px) {
-    .ahorro-page {
-        padding: 30px 0;
-    }
-    
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-    
-    .modalidad-body, .beneficios-card {
-        padding: 20px;
-    }
+    .ahorro-page { padding: 30px 0; }
+    .modalidad-body, .beneficios-card { padding: 20px; }
 }

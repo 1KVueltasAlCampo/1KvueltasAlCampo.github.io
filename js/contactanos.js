@@ -1,25 +1,47 @@
-document.addEventListener("contentLoaded", function (event) {
-    const contactForm = document.getElementById("contactForm");
+console.log("Cargado script: contactanos.js");
 
-    if (contactForm) {
-        contactForm.addEventListener("submit", function (event) {
-            event.preventDefault(); // Evita el envío del formulario
+document.addEventListener("pageLoaded", function (event) {
+    // Verificamos si la página actual es 'contactanos'
+    if (event.detail === "contactanos") {
+        console.log("Inicializando formulario de contacto");
 
-            // Obtener los valores del formulario
-            const nombre = document.getElementById("nombre").value;
-            const asunto = document.getElementById("asunto").value;
-            const mensaje = document.getElementById("mensaje").value;
+        const contactForm = document.getElementById("contactForm");
 
-            // Correo predefinido
-            const correo = "fedintep@gmail.com";
+        if (contactForm) {
+            // Eliminar listeners antiguos para evitar duplicados (buena práctica en SPA)
+            const newForm = contactForm.cloneNode(true);
+            contactForm.parentNode.replaceChild(newForm, contactForm);
 
-            // Construir el enlace mailto
-            const mailtoLink = `mailto:${correo}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(`Nombre: ${nombre}\n\nMensaje: ${mensaje}`)}`;
+            newForm.addEventListener("submit", function (e) {
+                e.preventDefault(); // 1. DETIENE la recarga de la página
 
-            // Abrir el cliente de correo
-            window.location.href = mailtoLink;
-        });
-    } else {
-        console.error("El formulario #contactForm no se encontró en el DOM");
+                // 2. Obtener valores
+                const nombre = document.getElementById("nombre").value;
+                const asunto = document.getElementById("asunto").value;
+                const mensaje = document.getElementById("mensaje").value;
+
+                // 3. Validación básica (opcional, el HTML 'required' ya ayuda)
+                if (!nombre || !mensaje) {
+                    alert("Por favor diligencie los campos obligatorios.");
+                    return;
+                }
+
+                // 4. Construir Mailto
+                const correoDestino = "fedintep@gmail.com";
+                const subject = `Contacto Web: ${asunto}`;
+                const body = `Nombre: ${nombre}\n\nMensaje:\n${mensaje}`;
+                
+                const mailtoLink = `mailto:${correoDestino}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                // 5. Abrir cliente de correo
+                window.location.href = mailtoLink;
+                
+                // Opcional: Limpiar formulario
+                newForm.reset();
+            });
+            console.log("Evento submit adjuntado correctamente.");
+        } else {
+            console.error("Error: No se encontró el formulario #contactForm.");
+        }
     }
 });

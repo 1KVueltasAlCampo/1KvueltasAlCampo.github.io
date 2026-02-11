@@ -1,3 +1,5 @@
+/* resena_historica_style.css */
+
 /* Estilos generales */
 body {
     font-family: 'Poppins', 'Segoe UI', sans-serif;
@@ -89,50 +91,65 @@ body {
     padding: 30px;
 }
 
-/* Hitos */
+/* --- HITOS (CORRECCIÓN DE CAPAS AQUÍ) --- */
 .milestone {
     display: flex;
     margin-bottom: 40px;
-    position: relative;
+    position: relative; /* Necesario para contener la línea absoluta */
+    z-index: 1; /* Establece contexto de apilamiento */
 }
 
 .milestone:last-child {
     margin-bottom: 0;
 }
 
+/* LA LÍNEA (CAPA FONDO) */
 .milestone::after {
     content: '';
     position: absolute;
     top: 60px;
     bottom: -30px;
-    left: 25px;
+    left: 25px; /* Posición original a la izquierda */
     width: 2px;
     background-color: #e0e0e0;
-    z-index: 0;
+    z-index: -1; /* SOLUCIÓN: Se envía detrás de todo */
 }
 
 .milestone:last-child::after {
     display: none;
 }
 
+/* EL ÍCONO (CAPA SUPERIOR) */
 .milestone-icon {
-    flex: 0 0 50px;
-    height: 50px;
-    background-color: #004080;
-    color: white;
+    /* Flexbox properties para centrar el icono interno */
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    
+    /* Dimensiones Rígidas (LA SOLUCIÓN AL ÓVALO) */
+    width: 50px;          /* NUEVO: Fuerza el ancho exacto */
+    height: 50px;         /* NUEVO: Fuerza el alto exacto */
+    min-width: 50px;      /* NUEVO: Prohíbe aplastamiento horizontal */
+    min-height: 50px;     /* NUEVO: Prohíbe aplastamiento vertical */
+    
+    /* Estilos visuales */
+    flex: 0 0 50px;       /* Mantiene la lógica flex original */
+    background-color: #004080;
+    color: white;
+    border-radius: 50%;   /* Esto crea el círculo */
     margin-right: 25px;
     position: relative;
-    z-index: 0;
+    z-index: 2;
     font-size: 1.4rem;
     box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
 }
 
+/* EL CONTENIDO (CAPA SUPERIOR CON MÁSCARA) */
 .milestone-content {
     flex: 1;
+    position: relative;
+    z-index: 2; /* SOLUCIÓN: Encima de la línea */
+    background-color: #fff; /* SOLUCIÓN: Fondo blanco actúa como máscara si la línea pasa por debajo */
 }
 
 .milestone-content h3 {
@@ -262,17 +279,28 @@ footer p {
         text-align: center;
     }
     
+    /* CAMBIO: Mantenemos flex-direction row (original) para mantener ícono a la izq y texto a la derecha */
+    /* Si el espacio es muy reducido, dejamos que wrap */
     .milestone {
-        flex-direction: column;
+        flex-direction: column; /* Apilamos en móvil si es necesario */
+        align-items: flex-start; /* Alineamos a la izquierda */
     }
     
     .milestone::after {
-        left: 25px;
+        left: 25px; /* Mantenemos la línea alineada al centro del ícono */
+        z-index: -1; /* Siempre detrás */
     }
     
     .milestone-icon {
         margin-bottom: 20px;
         margin-right: 0;
+        align-self: flex-start; /* Alineamos el ícono a la izquierda con la línea */
+    }
+    
+    .milestone-content {
+        padding-left: 10px; /* Separación sutil del borde */
+        background-color: rgba(255,255,255,0.9); /* Fondo semi-opaco para asegurar legibilidad sobre la línea */
+        width: 100%;
     }
     
     .values-container {

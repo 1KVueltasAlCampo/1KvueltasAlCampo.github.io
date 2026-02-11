@@ -1,3 +1,5 @@
+/* contactanos_style.css */
+
 /* Estilos generales */
 body {
     font-family: 'Poppins', 'Segoe UI', sans-serif;
@@ -87,11 +89,18 @@ body {
 .info-item {
     display: flex;
     margin-bottom: 25px;
+    align-items: center; /* Asegura alineación vertical centrada */
 }
 
+/* --- FIX: CÍRCULOS PERFECTOS EN MÓVIL --- */
 .info-icon {
+    /* Dimensiones Rígidas */
     flex: 0 0 50px;
+    width: 50px;
     height: 50px;
+    min-width: 50px; /* Prohíbe aplastamiento horizontal */
+    min-height: 50px; /* Prohíbe aplastamiento vertical */
+    
     background-color: #004080;
     color: white;
     display: flex;
@@ -111,12 +120,12 @@ body {
     color: #004080;
     font-size: 1.3rem;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-weight: 600;
 }
 
 .info-content p {
-    margin: 0 0 5px 0;
+    margin: 0;
     color: #555;
     font-size: 1rem;
 }

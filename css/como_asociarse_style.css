@@ -1,48 +1,7 @@
-/* Estilos generales */
-body {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f7fa;
-    margin: 0;
-    padding: 0;
-}
+/* como_asociarse_style.css */
 
-/* Sección principal */
-.como-asociarse {
-    padding: 60px 0;
-    background-image: linear-gradient(to bottom, #f5f7fa, #e4e7f0);
-}
-
-/* Sección Hero */
-.hero-section {
-    margin-bottom: 60px;
-}
-
-.hero-section h1 {
-    color: #003366;
-    margin-bottom: 15px;
-}
-
-.hero-section .badge {
-    background-color: #004080;
-    font-size: 0.9rem;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-weight: 500;
-}
-
-.decorative-line {
-    width: 80px;
-    height: 4px;
-    background-color: #004080;
-    margin: 20px auto 25px;
-    border-radius: 2px;
-}
-
-.hero-section .lead {
-    font-size: 1.2rem;
-    margin-bottom: 0;
+.como-asociarse-view {
+    padding: 30px 0;
 }
 
 /* Tarjeta de Pasos */
@@ -76,7 +35,7 @@ body {
 }
 
 .pasos-body {
-    padding: 30px;
+    padding: 40px;
 }
 
 /* Items de Pasos */
@@ -90,12 +49,13 @@ body {
     margin-bottom: 0;
 }
 
+/* Línea conectora */
 .paso-item::after {
     content: '';
     position: absolute;
-    top: 60px;
-    bottom: -30px;
-    left: 30px;
+    top: 60px; /* Debajo del círculo */
+    bottom: -40px; /* Conecta con el siguiente */
+    left: 30px; /* Centrado en el círculo de 60px */
     width: 2px;
     background-color: #e0e0e0;
     z-index: -1;
@@ -105,18 +65,24 @@ body {
     display: none;
 }
 
+/* --- FIX DE GEOMETRÍA: CÍRCULOS PERFECTOS --- */
 .paso-numero {
-    flex: 0 0 60px;
+    /* Dimensiones rígidas */
+    width: 60px;
     height: 60px;
+    min-width: 60px; /* Impide aplastamiento horizontal */
+    min-height: 60px; /* Impide aplastamiento vertical */
+    flex: 0 0 60px;   /* Flex-basis fijo */
+    
     background-color: #004080;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 50%; /* Círculo */
     margin-right: 25px;
     position: relative;
-    z-index: 0;
+    z-index: 1;
     font-size: 1.8rem;
     font-weight: bold;
     box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
@@ -143,25 +109,31 @@ body {
     margin-bottom: 15px;
 }
 
-.btn-descargar {
+/* Botón Formulario */
+.btn-formulario {
     display: inline-flex;
     align-items: center;
-    padding: 8px 16px;
-    background-color: #f0f4f8;
-    color: #004080;
+    padding: 10px 20px;
+    background-color: #004080;
+    color: white;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 6px;
     font-weight: 500;
     transition: all 0.3s ease;
+    margin-top: 5px;
+    box-shadow: 0 4px 12px rgba(0, 64, 128, 0.2);
 }
 
-.btn-descargar:hover {
-    background-color: #004080;
+.btn-formulario:hover {
+    background-color: #0066b2;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
     color: white;
 }
 
-.btn-descargar i {
+.btn-formulario i {
     margin-right: 8px;
+    font-size: 1.1rem;
 }
 
 /* Sección de Ubicación */
@@ -187,44 +159,15 @@ body {
     margin-right: 10px;
 }
 
-.ubicacion-info p {
-    margin-bottom: 10px;
-    color: #555;
-}
-
-.ubicacion-info ul {
-    padding-left: 20px;
-    margin-bottom: 20px;
-    color: #555;
-}
-
-.ubicacion-info ul li {
-    margin-bottom: 5px;
-}
-
-.mapa-placeholder {
+.mapa-placeholder, .mapa-container {
     background-color: #f0f4f8;
     border-radius: 10px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #004080;
-    border: 1px dashed #bbd4e8;
+    height: 300px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
 }
 
-.mapa-placeholder i {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-
-.mapa-placeholder p {
-    font-weight: 500;
-    margin: 0;
-}
-
-/* CTA Section */
+/* CTA */
 .cta-card {
     background-image: linear-gradient(135deg, #004080, #0066b2);
     color: white;
@@ -234,155 +177,67 @@ body {
 }
 
 .cta-card h2 {
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.8rem;
-}
-
-.cta-card p {
-    opacity: 0.9;
-    margin-bottom: 0;
-    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 10px;
 }
 
 .cta-card .btn-primary {
     background-color: white;
     color: #004080;
     border: none;
-    padding: 12px 30px;
     font-weight: 600;
-    transition: all 0.3s ease;
 }
 
 .cta-card .btn-primary:hover {
     background-color: #f0f0f0;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
-/* Footer */
-footer {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-/* Media queries para responsividad */
-@media (max-width: 992px) {
-    .pasos-card, .ubicacion-card, .cta-card {
-        margin: 0 20px;
-    }
-}
-
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .como-asociarse {
-        padding: 40px 0;
-    }
-    
-    .hero-section {
-        margin-bottom: 40px;
-    }
-    
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-    
     .pasos-header {
         flex-direction: column;
         text-align: center;
     }
     
     .pasos-icon {
-        margin-bottom: 15px;
         margin-right: 0;
+        margin-bottom: 15px;
     }
     
+    .pasos-body {
+        padding: 30px 20px;
+    }
+
+    /* En móvil, permitimos que el paso fluya verticalmente si es necesario, 
+       pero el ícono mantiene su forma */
     .paso-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .paso-item::after {
-        left: 50%;
-        transform: translateX(-50%);
+        flex-direction: row; /* Mantenemos row para que el número esté al lado del título */
+        align-items: flex-start;
     }
     
     .paso-numero {
-        margin-bottom: 20px;
-        margin-right: 0;
+        margin-right: 15px; /* Reducimos margen */
+        min-width: 50px;    /* Un poco más pequeño en móvil si se desea */
+        min-height: 50px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        flex: 0 0 50px;
+    }
+    
+    /* Ajuste de línea conectora para el nuevo tamaño */
+    .paso-item::after {
+        left: 25px; /* Mitad de 50px */
+        top: 50px;
+    }
+
+    .btn-formulario {
+        width: 100%;
+        justify-content: center;
     }
     
     .ubicacion-card {
         padding: 30px 20px;
-        text-align: center;
-    }
-    
-    .ubicacion-info h2 {
-        justify-content: center;
-    }
-    
-    .mapa-placeholder {
-        margin-top: 30px;
-    }
-    
-    .cta-card {
-        padding: 30px 20px;
-        text-align: center;
-    }
-}
-
-@media (max-width: 576px) {
-    .como-asociarse {
-        padding: 30px 0;
-    }
-    
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-    
-    .pasos-body, .ubicacion-card, .cta-card {
-        padding: 20px;
-    }
-}
-
-.btn-formulario {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 18px;
-    background-color: #004080;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    margin-top: 5px;
-    box-shadow: 0 4px 12px rgba(0, 64, 128, 0.2);
-}
-
-.btn-formulario:hover {
-    background-color: #0066b2;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
-    color: white;
-}
-
-.btn-formulario i {
-    margin-right: 8px;
-    font-size: 1.1rem;
-}
-
-@media (max-width: 768px) {
-    .btn-formulario {
-        width: 100%;
-        justify-content: center;
     }
 }

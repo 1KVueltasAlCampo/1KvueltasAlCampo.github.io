@@ -1,54 +1,130 @@
-/* ------------------------------------------ N A V B A R ------------------------------------------ */
+/* style.css - Archivo Maestro */
+
+/* 1. DEFINICIÓN DE VARIABLES (Design System) */
+:root {
+    --color-primary: #004080;
+    --color-primary-light: #0066cc;
+    --color-secondary: #193783;
+    --color-accent: #e6f0ff;
+    --color-text-body: #4a4a4a;
+    --color-text-heading: #003366;
+    --border-radius-card: 12px;
+    --border-radius-btn: 50px;
+    --shadow-card: 0 10px 25px rgba(0, 64, 128, 0.08);
+    --shadow-hover: 0 15px 35px rgba(0, 64, 128, 0.15);
+    --font-main: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+/* 2. RESET Y BASES */
+body {
+    font-family: var(--font-main);
+    color: var(--color-text-body);
+    background-color: #f4f7fa;
+    line-height: 1.7;
+    padding-top: 76px;
+}
+
+h1, h2, h3, h4, h5 {
+    color: var(--color-text-heading);
+    font-weight: 700;
+}
+
+/* 3. NAVBAR */
 .navbar {
-    background-color: #193783 !important;
+    background-color: var(--color-secondary) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 12px 0;
 }
 
 .navbar-brand-container {
     display: flex;
     align-items: center;
-    max-width: 50%;
 }
 
 .navbar-logo {
-    height: 40px;
+    height: 45px;
     width: auto;
-    transition: opacity 0.3s ease-in-out;
-    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .navbar-logo:hover {
-    opacity: 0.7;
+    transform: scale(1.05);
 }
 
-/* Navbar dropdown */
 .navbar-nav .nav-link {
-    color: #ffffff !important;
+    color: rgba(255,255,255,0.95) !important;
+    font-weight: 500;
+    margin: 0 5px;
+    transition: color 0.3s ease;
 }
 
-.navbar-nav .dropdown-menu {
-    background-color: #e6f2ff;
+.navbar-nav .nav-link:hover {
+    color: #fff !important;
+    text-shadow: 0 0 5px rgba(255,255,255,0.3);
 }
 
-.navbar-nav .dropdown-menu .dropdown-item {
-    color: #004080;
+.dropdown-menu {
+    border: none;
+    box-shadow: var(--shadow-hover);
+    border-radius: 8px;
+    margin-top: 10px;
 }
 
-.navbar-nav .dropdown-menu .dropdown-item:hover {
-    background-color: #b3daff;
+.dropdown-item {
+    color: var(--color-primary);
+    padding: 10px 20px;
+    font-size: 0.95rem;
 }
 
-/* Mostrar menú desplegable al pasar el mouse */
-.nav-item.dropdown:hover .dropdown-menu {
-    display: block;
+.dropdown-item:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
 }
 
-/* ------------------------------------------ F O O T E R ------------------------------------------ */
+/* FIX MENU RESPONSIVE BLANCO */
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.5) !important;
+}
+
+/* Invertimos los colores: Lo negro se vuelve blanco */
+.navbar-toggler-icon {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* 4. COMPONENTES GLOBALES */
+.hero-section {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.hero-section .badge {
+    background-color: var(--color-primary) !important;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+}
+
+.decorative-line {
+    width: 80px;
+    height: 4px;
+    background-color: var(--color-primary);
+    margin: 20px auto;
+    border-radius: 2px;
+}
+
+/* 5. FOOTER */
 footer {
-    background-color: #193783;
+    background-color: var(--color-secondary);
     color: #ffffff;
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
+    padding: 20px 0;
+    margin-top: 60px;
+    position: relative;
     width: 100%;
 }

@@ -1,47 +1,34 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Cuotas - Fondo de Ahorros</title>
-    <link rel="stylesheet" href="../css/simulador_credito_style.css">
-</head>
-<body>
-    <div class="simulador-container">
-        <h1>Simulador de Cuotas</h1>
-        
-        <form id="formSimulador" class="form-simulador">
-            <div class="form-group">
-                <label for="capital">Valor Capital (Monto del préstamo):</label>
-                <input type="text" id="capital" name="capital" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="cuotas">Número de Cuotas (meses):</label>
-                <input type="number" id="cuotas" name="cuotas" required min="1" max="120">
-            </div>
-            
-            <div class="form-group">
-                <label for="tipoCredito">Tipo de Crédito:</label>
-                <select id="tipoCredito" name="tipoCredito" required>
-                    <option value="ahorros">SOBRE LOS AHORROS Y APORTES</option>
-                    <option value="deudor">CON DEUDOR SOLIDARIO</option>
-                </select>
-            </div>
-            
-            <button type="submit" class="btn-simular">Simular Crédito</button>
-        </form>
-        
-        <div id="resultados" class="resultados hidden">
-            <div class="resultado-resumen">
-                <p id="resumenCredito" class="resumen-texto"></p>
-                <p id="valorCuota" class="valor-cuota"></p>
-            </div>
-            
-            <button id="btnVolver" class="btn-volver">Volver a Simular</button>
+<div class="simulador-container">
+    <h1>Simulador de Cuotas</h1>
+    
+    <form id="formSimulador" class="form-simulador">
+        <div class="form-group">
+            <label for="capital">Valor Capital (Monto del préstamo):</label>
+            <input type="text" id="capital" name="capital" required>
         </div>
+        
+        <div class="form-group">
+            <label for="cuotas">Número de Cuotas (meses):</label>
+            <input type="number" id="cuotas" name="cuotas" required min="1" max="120">
+        </div>
+        
+        <div class="form-group">
+            <label for="tipoCredito">Tipo de Crédito:</label>
+            <select id="tipoCredito" name="tipoCredito" required>
+                <option value="ahorros">SOBRE LOS AHORROS Y APORTES</option>
+                <option value="deudor">CON DEUDOR SOLIDARIO</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn-simular">Simular Crédito</button>
+    </form>
+    
+    <div id="resultados" class="resultados hidden">
+        <div class="resultado-resumen">
+            <p id="resumenCredito" class="resumen-texto"></p>
+            <p id="valorCuota" class="valor-cuota"></p>
+        </div>
+        
+        <button id="btnVolver" class="btn-volver">Volver a Simular</button>
     </div>
-
-    <script src="../js/simulador.js"></script>
-</body>
-</html>
+</div>

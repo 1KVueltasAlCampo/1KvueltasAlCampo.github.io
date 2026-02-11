@@ -1,31 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estado de Cuenta - Fedintep</title>
-    <link rel="stylesheet" href="../css/estado_cuenta_style.css">
-</head>
-<body>
-    <div class="cuenta-container">
-        <h1 id="titulo"></h1> <!-- Se mostrará la fecha en el título -->
-        <div id="resultados">
-            <p id="mensaje"></p>
-            <p><strong>Ahorros y aportes:</strong> <span id="totalAhorros"></span></p>
-            <p><strong>Valor de créditos:</strong> <span id="totalCreditos"></span></p>
-            <p><strong>Capacidad de crédito sin deudor solidario:</strong> <span id="capacidadSinDeudor"></span></p>
-            <p><strong>Capacidad de crédito con deudor solidario:</strong> <span id="capacidadConDeudor"></span></p>
-        </div>
+<div class="estado-cuenta-container">
+    <h1 id="titulo">Estado de Cuenta</h1>
+    <div class="estado-cuenta-resultados">
+        <p id="mensaje"></p>
+        <p><strong>Ahorros y aportes:</strong> <span id="totalAhorros">Cargando...</span></p>
+        <p><strong>Valor de créditos:</strong> <span id="totalCreditos">Cargando...</span></p>
+        <p><strong>Capacidad de crédito sin deudor solidario:</strong> <span id="capacidadSinDeudor">Cargando...</span></p>
+        <p><strong>Capacidad de crédito con deudor solidario:</strong> <span id="capacidadConDeudor">Cargando...</span></p>
     </div>
-
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        document.getElementById("titulo").textContent = `Estado de Cuenta al ${params.get("fecha")}`;
-        document.getElementById("mensaje").textContent = params.get("mensaje");
-        document.getElementById("totalAhorros").textContent = params.get("totalAhorros");
-        document.getElementById("totalCreditos").textContent = params.get("totalCreditos");
-        document.getElementById("capacidadSinDeudor").textContent = params.get("capacidadSinDeudor");
-        document.getElementById("capacidadConDeudor").textContent = params.get("capacidadConDeudor");
-    </script>
-</body>
-</html>
+    <button class="btn-volver" onclick="loadPage('cuenta.html')">Volver al menú principal</button>
+</div>

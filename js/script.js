@@ -1,103 +1,94 @@
-let galleryInterval = null; // Variable global para almacenar el intervalo de la galería
+// Variable global para controlar intervalos (carruseles, auto-play)
+let activeIntervals = [];
 
-function loadPage(page) {
-    // Pausar la galería si está activa
-    if (galleryInterval) {
-        clearInterval(galleryInterval);
-        galleryInterval = null;
-        console.log("Galería pausada al cargar una nueva página");
-    }
+// Función para limpiar intervalos previos al cambiar de página
+function clearIntervals() {
+    activeIntervals.forEach(interval => clearInterval(interval));
+    activeIntervals = [];
+}
 
-    // Cerrar el menú móvil desplegado si está abierto
-    const navbarCollapse = document.getElementById('navbarNav');
-    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-        if (bsCollapse) {
+/**
+ * Función principal para cargar fragmentos HTML
+ * @param {string} page - Nombre de la página (ej: 'inicio', 'galeria')
+ */
+async function loadPage(page) {
+    try {
+        // 1. Limpieza previa
+        clearIntervals(); 
+        
+        // Cerrar menú móvil si está abierto (Bootstrap)
+        const navbarCollapse = document.getElementById('navbarNav');
+        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
             bsCollapse.hide();
         }
-    }
 
-    // Si la página no incluye .html, agregarlo
-    if (!page.endsWith('.html')) {
-        page = page + '.html';
-    }
+        // 2. Normalización del nombre
+        // Si viene "como_asociarse.html" o "/como_asociarse", lo limpiamos a "como_asociarse"
+        const pageName = page.replace('.html', '').replace(/^\//, '');
+        const targetUrl = `pages/${pageName}.html`;
 
-    fetch(`pages/${page}`)
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById("content").innerHTML = html;
+        // 3. Petición Fetch
+        const response = await fetch(targetUrl);
+        if (!response.ok) throw new Error(`No se pudo cargar ${targetUrl}`);
+        
+        const html = await response.text();
+
+        // 4. Inyección en el DOM
+        const contentDiv = document.getElementById("content");
+        contentDiv.style.opacity = 0;
+        
+        setTimeout(() => {
+            contentDiv.innerHTML = html;
+            contentDiv.style.opacity = 1;
             
-            // Desplazar el scroll hacia arriba
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth' // Hace que el desplazamiento sea suave
-            });
-            
-            // Disparar un evento personalizado después de cargar el contenido
-            const event = new CustomEvent("contentLoaded", { detail: page });
+            // Scroll arriba
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // 5. DISPARAR EVENTO PERSONALIZADO (CRÍTICO)
+            // Esto le grita a galeria.js: "¡OYE, YA CARGUÉ LA GALERÍA!"
+            const event = new CustomEvent("pageLoaded", { detail: pageName });
             document.dispatchEvent(event);
-        })
-        .catch(error => console.error("Error al cargar la página:", error));
-}
+            console.log(`Página cargada y evento disparado: ${pageName}`);
+        }, 200);
 
-// Función para capturar los clics en enlaces y manejar la navegación
-function handleNavigation(event) {
-    // Verificar si el clic fue en un enlace y no es un enlace externo o con target="_blank"
-    const link = event.target.closest('a');
-    if (link && link.getAttribute('href') && 
-        !link.getAttribute('target') && 
-        link.getAttribute('href').indexOf('http') !== 0 &&
-        link.getAttribute('href') !== '#') {
-        
-        // Prevenir el comportamiento predeterminado
-        event.preventDefault();
-        
-        // Obtener la ruta de la URL
-        const path = link.getAttribute('href');
-        
-        // Extraer el nombre de la página de la ruta
-        let pageName = path.replace(/^\//, ''); // Eliminar la barra inicial
-        if (!pageName) pageName = 'inicio';
-        
-        // Actualizar la URL sin recargar la página
-        window.history.pushState({pageName}, pageName, path);
-        
-        // Cargar el contenido
-        loadPage(pageName);
+    } catch (error) {
+        console.error("Error crítico:", error);
+        // Si falla, intentamos cargar inicio
+        if (page !== 'inicio') loadPage('inicio');
     }
 }
 
-// Función para manejar los eventos de navegación del navegador (atrás/adelante)
-function handlePopState(event) {
-    // Obtener el nombre de la página del estado, o usar 'inicio' como valor predeterminado
-    let pageName = 'inicio';
-    if (event.state && event.state.pageName) {
-        pageName = event.state.pageName;
-    } else {
-        // Si no hay estado, extraer el nombre de la página de la URL actual
-        const path = window.location.pathname.replace(/^\//, '');
-        pageName = path || 'inicio';
-    }
-    
-    // Cargar la página
-    loadPage(pageName);
-}
+// Manejo de navegación (SPA)
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Interceptar TODOS los clics en enlaces
+    document.body.addEventListener('click', e => {
+        const link = e.target.closest('a');
+        
+        // Si es un enlace interno (empieza con / o no tiene http)
+        if (link && link.getAttribute('href') && 
+            !link.getAttribute('href').startsWith('http') && 
+            !link.getAttribute('href').startsWith('#') &&
+            !link.getAttribute('target')) {
+            
+            e.preventDefault(); // Evita que el navegador recargue
+            const href = link.getAttribute('href');
+            const page = href.replace(/^\//, '') || 'inicio';
+            
+            // Actualizar URL del navegador visualmente
+            window.history.pushState({ page }, null, `/${page}`);
+            loadPage(page);
+        }
+    });
 
-// Inicialización cuando el DOM está listo
-document.addEventListener("DOMContentLoaded", function() {
-    // Añadir el controlador de eventos para los clics en enlaces
-    document.body.addEventListener('click', handleNavigation);
-    
-    // Añadir el controlador de eventos para los botones de navegación del navegador
-    window.addEventListener('popstate', handlePopState);
-    
-    // Obtener la ruta inicial de la URL actual
-    const path = window.location.pathname.replace(/^\//, '');
-    const pageName = path || 'inicio';
-    
-    // Establecer el estado inicial
-    window.history.replaceState({pageName}, pageName, '/' + pageName);
-    
-    // Cargar la página inicial
-    loadPage(pageName);
+    // 2. Manejar botones de "Atrás/Adelante" del navegador
+    window.addEventListener('popstate', (e) => {
+        const state = e.state;
+        const page = state ? state.page : 'inicio';
+        loadPage(page);
+    });
+
+    // 3. Carga inicial basada en la URL actual
+    const initialPath = window.location.pathname.replace(/^\//, ''); // Quitar barra inicial
+    loadPage(initialPath || 'inicio');
 });

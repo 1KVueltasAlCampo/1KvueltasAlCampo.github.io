@@ -1,17 +1,23 @@
-/* 📌 Contenedor general para que no se sobreponga al footer */
+/* 📌 Contenedor general */
 .estructura-funcional {
     padding: 40px 0;
 }
 
-/* 📌 Contenedor para centrar y reducir el tamaño del organigrama */
+.section-grafico h1 {
+    color: #004080; /* Restaurado color original explícito */
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* 📌 Contenedor Mapa */
 .container-mapa {
-    max-width: 800px; /* Hace el organigrama más pequeño */
-    margin: 0 auto; /* Centra en la página */
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #f8f9fa; /* Color de fondo sutil */
+    background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas */
+    overflow-x: auto;
 }
 
 /* ORGANIGRAMA */
@@ -20,7 +26,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    min-width: 600px; /* Ancho mínimo para evitar compresión excesiva */
+    min-width: 600px;
 }
 
 /* 📌 Estilos de los niveles */
@@ -30,47 +36,40 @@
     align-items: center;
     position: relative;
     width: 100%;
-    margin-bottom: 20px; /* Espacio entre niveles */
+    margin-bottom: 20px;
 }
 
-/* CUADROS */
-.card {
-    background-color: #004080;
-    color: white;
+/* CUADROS (Restaurado original + Override de Bootstrap) */
+.organigrama .card {
+    background-color: #004080 !important; /* !important para ganar a Bootstrap */
+    color: white !important;
     padding: 10px 20px;
     border-radius: 10px;
     text-align: center;
     font-weight: bold;
-    width: 200px; /* Ancho base */
-    max-width: 100%; /* Responsive */
+    width: 200px;
+    max-width: 100%;
     position: relative;
-    z-index: 2; /* Mayor que las líneas para asegurar visibilidad */
-    box-sizing: border-box; /* Incluye padding en el ancho */
+    z-index: 2;
+    box-sizing: border-box;
+    border: none; /* Quitar borde de bootstrap */
 }
 
-/* LÍNEAS */
+/* LÍNEAS (Código original intacto) */
 .linea {
     width: 2px;
     background-color: #004080;
-    position: absolute; /* Cambiado a absoluto */
+    position: absolute;
     top: 0;
-    height: calc(70%); /* Altura calculada en vez de usar bottom */
+    height: calc(70%);
     left: 50%;
-    transform: translateX(-50%); /* Centra la línea */
+    transform: translateX(-50%);
     z-index: 1;
 }
 
-/* Línea específica después del nivel 2 */
-.nivel:nth-child(3) + .linea {
-    display: none; /* Elimina la línea después del nivel 2 */
-}
+.nivel:nth-child(3) + .linea { display: none; }
+.nivel-4 + .linea { display: none; }
 
-/* Línea después del nivel 4 (Gerente) que debe desaparecer */
-.nivel-4 + .linea {
-    display: none; /* Oculta esta línea específica */
-}
-
-/* Añadimos líneas verticales específicas para cada conexión */
 .nivel:first-child::after {
     content: '';
     position: absolute;
@@ -111,7 +110,7 @@
     z-index: 1;
 }
 
-/* 📌 AUXILIAR CONTABLE a la izquierda */
+/* 📌 AUXILIAR CONTABLE */
 .nivel-5 {
     display: flex;
     justify-content: flex-start;
@@ -120,12 +119,8 @@
     position: relative;
 }
 
-/* Línea especial para conectar Gerente con Auxiliar Contable */
-.nivel-4 {
-    position: relative;
-}
+.nivel-4 { position: relative; }
 
-/* Línea vertical para conectar Gerente con Auxiliar */
 .nivel-4::after {
     content: '';
     position: absolute;
@@ -133,23 +128,22 @@
     background-color: #004080;
     top: 50%;
     bottom: -20px;
-    left: calc(14% + 100px); /* Alineado con el centro del Auxiliar Contable */
+    left: calc(14% + 100px);
     z-index: 1;
 }
 
-/* Línea horizontal para conectar la línea vertical con el Gerente */
 .nivel-4::before {
     content: '';
     position: absolute;
     height: 2px;
     background-color: #004080;
-    width: calc(36% - 100px); /* Distancia desde la posición del Auxiliar hasta el centro */
+    width: calc(36% - 100px);
     top: 50%;
-    left: calc(14% + 100px); /* Mismo punto que la línea vertical */
+    left: calc(14% + 100px);
     z-index: 1;
 }
 
-/* 📌 Espacio para agregar más contenido */
+/* 📌 SECCIÓN INFERIOR (Estilos mejorados para los íconos) */
 .contenido-extra {
     margin-top: 50px;
     text-align: left;
@@ -197,13 +191,14 @@
     line-height: 1.6;
 }
 
-/* Estilo para las descripciones de órganos */
+/* Estilo para las descripciones de órganos con ICONOS VIVOS */
 .organ-description {
     display: flex;
+    align-items: center; /* Alineado al centro verticalmente */
     margin-bottom: 30px;
     background-color: #f8f9fa;
     border-radius: 10px;
-    padding: 20px;
+    padding: 25px;
     border-left: 5px solid #004080;
     transition: all 0.3s ease;
 }
@@ -213,14 +208,21 @@
     transform: translateY(-3px);
 }
 
+/* NUEVO: Contenedor de ícono tipo círculo */
 .icon-container {
-    flex: 0 0 60px;
+    flex: 0 0 70px;
+    height: 70px;
+    width: 70px;
+    background-color: #e6f0ff; /* Fondo azul claro */
+    border-radius: 50%; /* Círculo */
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #004080;
-    padding-top: 5px;
+    margin-right: 25px; /* Separación con el texto */
+    padding-top: 0; /* Quitamos padding top del original */
+    box-shadow: 0 4px 8px rgba(0, 64, 128, 0.1);
 }
 
 .organ-description .content {
@@ -230,36 +232,21 @@
 .organ-description .content p {
     margin-top: 0;
     font-size: 1rem;
+    margin-bottom: 10px;
 }
 
 .organ-description .content ul {
     padding-left: 20px;
-    margin: 10px 0;
+    margin: 0;
 }
 
 .organ-description .content li {
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     position: relative;
     padding-left: 5px;
-    list-style-type: none;
 }
 
-.organ-description .content li::before {
-    content: "•";
-    color: #004080;
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-}
-
-/* Resaltar texto importante */
-.organ-description strong {
-    color: #004080;
-    font-weight: 600;
-}
-
-/* Media queries para responsividad */
+/* Media queries */
 @media (max-width: 992px) {
     .contenido-extra {
         max-width: 95%;
@@ -268,9 +255,7 @@
 }
 
 @media (max-width: 768px) {
-    .container-mapa {
-        padding: 15px;
-    }
+    .container-mapa { padding: 15px; }
     
     .card {
         width: 180px;
@@ -278,49 +263,19 @@
         font-size: 14px;
     }
     
-    .linea-horizontal, .linea-horizontal-larga {
-        width: 120px;
-    }
+    .linea-horizontal, .linea-horizontal-larga { width: 120px; }
     
-    .nivel-5 {
-        padding-left: 10%;
-    }
+    .nivel-5 { padding-left: 10%; }
     
-    .nivel-4::after {
-        left: calc(10% + 90px);
-    }
+    .nivel-4::after { left: calc(10% + 90px); }
 
-    .contenido-extra h2 {
-        font-size: 1.8rem;
-    }
-    
-    .contenido-extra h3 {
-        font-size: 1.3rem;
-    }
-    
     .organ-description {
         flex-direction: column;
+        text-align: center;
     }
     
     .icon-container {
+        margin-right: 0;
         margin-bottom: 15px;
-    }
-}
-
-@media (max-width: 576px) {
-    .contenido-extra {
-        padding: 20px;
-    }
-    
-    .contenido-extra h2 {
-        font-size: 1.5rem;
-    }
-    
-    .contenido-extra h3 {
-        font-size: 1.2rem;
-    }
-    
-    .organ-description {
-        padding: 15px;
     }
 }

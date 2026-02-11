@@ -1,59 +1,72 @@
-document.addEventListener("contentLoaded", function (event) {
-    if (event.detail === "cuenta.html") {
-        console.log("Inicializando la página de cuenta");
+document.addEventListener("pageLoaded", function (e) {
+    const page = e.detail;
 
+    // --- LÓGICA PARA LA PÁGINA DE LOGIN (cuenta) ---
+    if (page === "cuenta") {
         const loginForm = document.getElementById("loginForm");
-        const cedulaInput = document.getElementById("cedula");
-        const passwordInput = document.getElementById("password");
-
+        
         if (loginForm) {
             loginForm.addEventListener("submit", async function (event) {
                 event.preventDefault(); 
-
-                const cedula = cedulaInput.value;
-                const password = passwordInput.value;
-                const url = "https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login";
-                //const url = "http://localhost:3000/login";
-
+                const btnSubmit = loginForm.querySelector('button[type="submit"]');
+                const originalBtnText = btnSubmit.innerText;
+                
                 try {
+                    btnSubmit.innerText = "Verificando...";
+                    btnSubmit.disabled = true;
+
+                    const cedula = document.getElementById("cedula").value;
+                    const password = document.getElementById("password").value;
+                    
+                    // URL de la API (Considerar mover a un archivo config.js en el futuro)
+                    const url = "https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login";
+
                     const response = await fetch(url, { 
                         method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ cedula, password })
                     });
 
                     const data = await response.json();
 
                     if (response.ok) {
-                        const estadoCuentaHTML = `
-                            <div class="estado-cuenta-container">
-                                <h1>${data.mensaje}</h1>
-                                <div class="estado-cuenta-resultados">
-                                    <p><strong>Ahorros y aportes:</strong> <span>${data.totalAhorros}</span></p>
-                                    <p><strong>Valor de créditos:</strong> <span>${data.totalCreditos}</span></p>
-                                    <p><strong>Capacidad de crédito sin deudor solidario:</strong> <span>${data.capacidadSinDeudor}</span></p>
-                                    <p><strong>Capacidad de crédito con deudor solidario:</strong> <span>${data.capacidadConDeudor}</span></p>
-                                </div>
-                                <button class="btn-volver" onclick="loadPage('cuenta.html')">Volver al menú principal</button>
-                            </div>
-                        `;
-
-                        document.getElementById("content").innerHTML = estadoCuentaHTML;
+                        // GUARDAR DATOS EN SESIÓN (Más seguro que URL params)
+                        sessionStorage.setItem('userData', JSON.stringify(data));
+                        // Redirigir internamente
+                        loadPage("estado_cuenta");
                     } else {
-                        alert(data.error || "Error al iniciar sesión");
+                        alert(data.error || "Credenciales incorrectas");
                     }
                 } catch (error) {
-                    console.error("Error:", error);
-                    alert("Error al conectar con el servidor");
+                    console.error("Error de red:", error);
+                    alert("No se pudo conectar con el servidor de Fedintep.");
+                } finally {
+                    btnSubmit.innerText = originalBtnText;
+                    btnSubmit.disabled = false;
                 }
-
-                cedulaInput.value = "";
-                passwordInput.value = "";
             });
-        } else {
-            console.error("El formulario #loginForm no se encontró en el DOM");
         }
+    }
+
+    // --- LÓGICA PARA LA PÁGINA DE RESULTADOS (estado_cuenta) ---
+    if (page === "estado_cuenta") {
+        const storedData = sessionStorage.getItem('userData');
+        
+        if (!storedData) {
+            // Si no hay datos, devolver al login
+            alert("Por favor inicie sesión primero");
+            loadPage("cuenta");
+            return;
+        }
+
+        const data = JSON.parse(storedData);
+        
+        // Inyectar datos en el DOM
+        document.getElementById("titulo").textContent = `Estado de cuenta al ${new Date().toLocaleDateString()}`; // O la fecha que venga del back
+        document.getElementById("mensaje").textContent = data.mensaje || `Bienvenido, ${data.nombre || 'Asociado'}`;
+        document.getElementById("totalAhorros").textContent = data.totalAhorros;
+        document.getElementById("totalCreditos").textContent = data.totalCreditos;
+        document.getElementById("capacidadSinDeudor").textContent = data.capacidadSinDeudor;
+        document.getElementById("capacidadConDeudor").textContent = data.capacidadConDeudor;
     }
 });

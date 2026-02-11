@@ -109,9 +109,15 @@ body {
     border-bottom: none;
 }
 
+/* FIX CÍRCULOS PERFECTOS: Ícono de línea */
 .linea-icon {
+    /* Dimensiones rígidas */
     flex: 0 0 60px;
+    width: 60px;
     height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    
     background-color: #004080;
     color: white;
     display: flex;
@@ -176,9 +182,14 @@ body {
     background-color: #fff7f0;
 }
 
+/* FIX CÍRCULOS PERFECTOS: Ícono de detalle */
 .detalle-icon {
+    /* Dimensiones rígidas */
     width: 70px;
     height: 70px;
+    min-width: 70px;
+    min-height: 70px;
+    
     background-color: white;
     border-radius: 50%;
     display: flex;
@@ -289,9 +300,15 @@ body {
     background-color: #f0f4f8;
 }
 
+/* FIX CÍRCULOS PERFECTOS: Ícono de ventajas */
 .ventaja-icon {
+    /* Dimensiones rígidas */
     flex: 0 0 60px;
+    width: 60px;
     height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    
     background-color: #e4f0fa;
     color: #004080;
     display: flex;

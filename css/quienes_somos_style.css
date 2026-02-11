@@ -1,214 +1,156 @@
-/* ------------------------------------------ Q U I E N E S   S O M O S ------------------------------------------ */
+/* --- LIMPIEZA Y ESTRUCTURA --- */
 
-.quienes-somos {
-    padding: 40px 0;
+.quienes-somos-page {
+    padding: 20px 0;
+    width: 100%;
+    overflow-x: hidden; /* Previene scroll horizontal accidental */
 }
 
-.section-quienes-somos, .section-mision-vision, .section-valores {
-    margin-bottom: 60px;
-}
-
-.section-quienes-somos h1, .section-mision-vision h2, .section-valores h2 {
-    color: #004080;
-    font-weight: bold;
-    margin-bottom: 30px;
-}
-
-.card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.card-body {
-    padding: 30px;
-}
-
-.icon-valores {
-    font-size: 2.5rem;
-    color: #004080;
-    margin-bottom: 15px;
-}
-
-.card-title {
-    font-size: 1.2rem;
-    color: #004080;
-    font-weight: bold;
-}
-
-/* Estilos para la sección Misión y Visión */
-.section-mision-vision .card {
-    height: 100%;
-}
-
-.section-mision-vision .card-body {
-    padding: 20px;
-}
-
-/* Centrar íconos en la sección de Valores */
-.section-valores .row {
-    justify-content: center;
-}
-
-
-/* Sección de Valores */
-.values-container {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    padding: 40px;
-    border: 1px solid rgba(0, 64, 128, 0.1);
-}
-
-.values-container h2 {
-    color: #003366;
-    font-weight: 700;
+/* Separación Vertical Sólida (Evita solapamientos) */
+.qs-section {
     position: relative;
+    width: 100%;
+    margin-bottom: 60px; /* Espacio seguro entre bloques */
+    display: block;
+}
+
+/* Títulos Principales */
+.section-title {
+    color: var(--color-primary);
+    font-weight: 800;
+    font-size: 1.8rem;
+    position: relative;
+    display: inline-block;
     padding-bottom: 15px;
-    margin-bottom: 30px;
 }
 
-.values-container h2::after {
-    content: "";
+.section-title::after {
+    content: '';
     display: block;
-    width: 60px;
-    height: 3px;
-    background-color: #004080;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background: var(--color-primary);
+    margin: 0 auto;
     border-radius: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.value-card {
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    padding: 30px 20px;
-    text-align: center;
-    height: 100%;
-    transition: all 0.3s ease;
-    border-top: 5px solid #004080;
+/* --- TARJETAS DE TEXTO (Misión/Visión) --- */
+.fed-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    border: none;
+    transition: transform 0.3s ease;
+    height: 100%; /* Para igualar alturas en columnas */
 }
 
-.value-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+.fed-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.value-card i {
-    font-size: 2.5rem;
-    color: #004080;
-    margin-bottom: 15px;
-    display: block;
+/* --- EL FIX DEL ESPACIO (PADDING) --- */
+.card-body {
+    /* MÓVIL: Padding justo y necesario. Ni más, ni menos. */
+    padding: 1.5rem !important; 
 }
 
-.value-card h3 {
-    color: #004080;
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    font-weight: 600;
+@media (min-width: 992px) {
+    /* ESCRITORIO: Más aire para elegancia */
+    .card-body {
+        padding: 3rem !important;
+    }
 }
 
-.value-card p {
-    color: #555;
-    font-size: 0.95rem;
+/* Estilo del Texto */
+.fed-text {
+    color: #444; /* Gris oscuro, alto contraste */
+    font-size: 1rem;
+    line-height: 1.6; /* 1.6 es el estándar de legibilidad web */
+    text-align: left; /* Alineación natural */
     margin-bottom: 0;
 }
 
-/* Footer */
-footer {
-    background-color: #003366;
-    color: white;
+.card-title-fed {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* --- SECCIÓN DE VALORES --- */
+.values-section .container {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.04);
+    padding: 40px 20px; /* Padding del contenedor gris/blanco */
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.value-item {
+    background-color: #fcfcfc;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 25px 15px;
     text-align: center;
-    padding: 20px;
-    margin-top: 50px;
+    height: 100%;
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--color-primary);
 }
 
-footer p {
+.value-item:hover {
+    background-color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Íconos (Burbuja) */
+.icon-box {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px auto;
+    background-color: #e6f0ff; /* Azul muy claro */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.value-item:hover .icon-box {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.value-item h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #193783; /* Color secundario */
+    margin-bottom: 10px;
+}
+
+.value-item p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.4;
     margin: 0;
-    font-size: 0.9rem;
 }
 
-/* Media queries para responsividad */
-@media (max-width: 992px) {
-    .timeline-card, .values-container {
-        margin: 0 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .resena-historica {
-        padding: 40px 0;
-    }
-    
-    .hero-section {
-        margin-bottom: 40px;
-    }
-    
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-    
-    .timeline-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .timeline-icon {
-        margin-bottom: 15px;
-    }
-    
-    .timeline-date {
-        text-align: center;
-    }
-    
-    .milestone {
-        flex-direction: column;
-    }
-    
-    .milestone::after {
-        left: 25px;
-    }
-    
-    .milestone-icon {
-        margin-bottom: 20px;
-        margin-right: 0;
-    }
-    
-    .values-container {
-        padding: 30px 20px;
-    }
-    
-    .value-card {
-        margin-bottom: 20px;
-    }
-}
-
+/* RESPONSIVE EXTRA */
 @media (max-width: 576px) {
-    .resena-historica {
-        padding: 30px 0;
+    /* En móviles muy pequeños, reducimos título */
+    .section-title {
+        font-size: 1.5rem;
     }
     
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-    
-    .timeline-body, .values-container {
-        padding: 20px;
-    }
-    
-    .timeline-date .year {
-        font-size: 2rem;
-    }
-    
-    .value-card {
-        padding: 20px 15px;
+    /* Aseguramos que la tarjeta ocupe el 100% visible */
+    .fed-card {
+        width: 100%;
     }
 }

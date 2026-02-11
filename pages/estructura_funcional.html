@@ -1,143 +1,111 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estructura Funcional - FEDINTEP</title>
-    <link rel="stylesheet" href="../css/estructura_funcional_style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <main class="estructura-funcional">
-        <section class="section-grafico">
-            <div class="container">
-                <h1 class="text-center mb-5">Estructura Funcional</h1>
+<div class="estructura-funcional">
+    <section class="section-grafico">
+        <div class="container">
+            <h1 class="text-center mb-5">Estructura Funcional</h1>
 
-                <!-- 📌 CONTENEDOR PARA EL MAPA CONCEPTUAL -->
-                <div class="container-mapa">
-                    <div class="organigrama">
-                        
-                        <!-- Nivel 1 -->
-                        <div class="nivel">
-                            <div class="card">Asamblea General de Asociados</div>
-                        </div>
-                        <div class="linea"></div>
+            <div class="container-mapa">
+                <div class="organigrama">
+                    
+                    <div class="nivel">
+                        <div class="card">Asamblea General de Asociados</div>
+                    </div>
+                    <div class="linea"></div>
 
-                        <!-- Nivel 2 -->
-                        <div class="nivel">
-                            <div class="card">Comité de Control Social</div>
-                            <div class="linea-horizontal"></div>
-                            <div class="card">Revisora Fiscal</div>
-                        </div>
-                        
-                        <!-- Nivel 3 -->
-                        <div class="nivel">
-                            <div class="card">Junta Directiva</div>
-                        </div>
+                    <div class="nivel">
+                        <div class="card">Comité de Control Social</div>
+                        <div class="linea-horizontal"></div>
+                        <div class="card">Revisora Fiscal</div>
+                    </div>
+                    
+                    <div class="nivel">
+                        <div class="card">Junta Directiva</div>
+                    </div>
 
-                        <!-- Nivel 4 -->
-                        <div class="nivel nivel-4">
-                            <div class="card">Gerente</div>
-                            <div class="linea-horizontal-larga"></div>
-                            <div class="card">Comités de Bienestar y Solidaridad</div>
-                        </div>
+                    <div class="nivel nivel-4">
+                        <div class="card">Gerente</div>
+                        <div class="linea-horizontal-larga"></div>
+                        <div class="card">Comités de Bienestar y Solidaridad</div>
+                    </div>
 
-                        <!-- Nivel 5 (Auxiliar Contable a la IZQUIERDA) -->
-                        <div class="nivel nivel-5">
-                            <div class="card card-auxiliar">Auxiliar Contable</div>
-                        </div>
+                    <div class="nivel nivel-5">
+                        <div class="card card-auxiliar">Auxiliar Contable</div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="contenido-extra">
+                <h2>Órganos de Administración</h2>
+                <p>La administración del Fondo de Empleados se lleva a cabo a través de tres instancias principales:</p>
+
+                <h3>Asamblea General</h3>
+                <div class="organ-description">
+                    <div class="icon-container">
+                        <i class="bi bi-people-fill"></i> </div>
+                    <div class="content">
+                        <p>La Asamblea General es el <strong>órgano máximo de administración</strong> del Fondo. Sus decisiones son obligatorias para todos los Asociados y la conforma la reunión, debidamente convocada, de los Asociados hábiles o de los delegados elegidos directamente por estos.</p>
                     </div>
                 </div>
 
-                <!-- 📌 Sección adicional con la nueva información -->
-                <section class="contenido-extra">
-                    <h2>Órganos de Administración</h2>
-                    <p>La administración del Fondo de Empleados se lleva a cabo a través de tres instancias principales:</p>
-
-                    <h3>Asamblea General</h3>
-                    <div class="organ-description">
-                        <div class="icon-container">
-                            <i class="fas fa-users-class"></i>
-                        </div>
-                        <div class="content">
-                            <p>La Asamblea General es el <strong>órgano máximo de administración</strong> del Fondo. Sus decisiones son obligatorias para todos los Asociados y la conforma la reunión, debidamente convocada, de los Asociados hábiles o de los delegados elegidos directamente por estos.</p>
-                        </div>
+                <h3>Junta Directiva</h3>
+                <div class="organ-description">
+                    <div class="icon-container">
+                        <i class="bi bi-easel2-fill"></i> </div>
+                    <div class="content">
+                        <p>Es el órgano de <strong>administración permanente</strong> del Fondo y responsable de la dirección general de las operaciones. Está compuesta por asociados hábiles elegidos en la Asamblea General:</p>
+                        <ul>
+                            <li>Cinco (5) miembros principales</li>
+                            <li>Cinco (5) suplentes numéricos</li>
+                            <li>Período de dos (2) años</li>
+                            <li>Pueden ser reelegidos o removidos libremente</li>
+                            <li>Inician funciones una vez se registre su nombramiento en el organismo competente</li>
+                        </ul>
                     </div>
+                </div>
 
-                    <h3>Junta Directiva</h3>
-                    <div class="organ-description">
-                        <div class="icon-container">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        <div class="content">
-                            <p>Es el órgano de <strong>administración permanente</strong> del Fondo y responsable de la dirección general de las operaciones. Está compuesta por asociados hábiles elegidos en la Asamblea General:</p>
-                            <ul>
-                                <li>Cinco (5) miembros principales</li>
-                                <li>Cinco (5) suplentes numéricos</li>
-                                <li>Período de dos (2) años</li>
-                                <li>Pueden ser reelegidos o removidos libremente</li>
-                                <li>Inician funciones una vez se registre su nombramiento en el organismo competente</li>
-                            </ul>
-                        </div>
+                <h3>El Gerente</h3>
+                <div class="organ-description">
+                    <div class="icon-container">
+                        <i class="bi bi-person-badge-fill"></i> </div>
+                    <div class="content">
+                        <p>Es el <strong>Representante Legal</strong> del Fondo, principal ejecutor de las decisiones de la Asamblea General y de la Junta Directiva, y superior jerárquico de todos los empleados.</p>
+                        <p>Es nombrado por la Junta Directiva para un período de un (1) año, pudiendo ser removido de conformidad con las normas legales.</p>
                     </div>
+                </div>
 
-                    <h3>El Gerente</h3>
-                    <div class="organ-description">
-                        <div class="icon-container">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <div class="content">
-                            <p>Es el <strong>Representante Legal</strong> del Fondo, principal ejecutor de las decisiones de la Asamblea General y de la Junta Directiva, y superior jerárquico de todos los empleados.</p>
-                            <p>Es nombrado por la Junta Directiva para un período de un (1) año, pudiendo ser removido de conformidad con las normas legales.</p>
-                        </div>
+                <h2>Órganos de Vigilancia</h2>
+                <p>Sin perjuicio de la inspección y vigilancia que el Estado ejerce sobre El FONDO DE EMPLEADOS DEL INTEP, éste cuenta para su control social interno, así como para la revisión fiscal y contable, con:</p>
+
+                <h3>Comité de Control Social</h3>
+                <div class="organ-description">
+                    <div class="icon-container">
+                        <i class="bi bi-search"></i> </div>
+                    <div class="content">
+                        <p>Es el organismo que tiene a su cargo <strong>velar por el correcto funcionamiento y eficiente administración</strong> del Fondo.</p>
+                        <p>Está constituido por:</p>
+                        <ul>
+                            <li>Tres miembros principales</li>
+                            <li>Tres suplentes personales</li>
+                            <li>Nombrados por la Asamblea General</li>
+                            <li>Período de dos (2) años</li>
+                        </ul>
                     </div>
+                </div>
 
-                    <h2>Órganos de Vigilancia</h2>
-                    <p>Sin perjuicio de la inspección y vigilancia que el Estado ejerce sobre El FONDO DE EMPLEADOS DEL INTEP, éste cuenta para su control social interno, así como para la revisión fiscal y contable, con:</p>
-
-                    <h3>Comité de Control Social</h3>
-                    <div class="organ-description">
-                        <div class="icon-container">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        <div class="content">
-                            <p>Es el organismo que tiene a su cargo <strong>velar por el correcto funcionamiento y eficiente administración</strong> del Fondo.</p>
-                            <p>Está constituido por:</p>
-                            <ul>
-                                <li>Tres miembros principales</li>
-                                <li>Tres suplentes personales</li>
-                                <li>Nombrados por la Asamblea General</li>
-                                <li>Período de dos (2) años</li>
-                            </ul>
-                        </div>
+                <h3>Revisor Fiscal</h3>
+                <div class="organ-description">
+                    <div class="icon-container">
+                        <i class="bi bi-clipboard-data-fill"></i> </div>
+                    <div class="content">
+                        <p>Responsable de la <strong>inspección y vigilancia interna</strong> del Fondo de Empleados.</p>
+                        <p>Requisitos:</p>
+                        <ul>
+                            <li>Contador público con matrícula vigente</li>
+                            <li>No puede ser asociado del Fondo de Empleados</li>
+                            <li>Puede ser persona jurídica bajo la responsabilidad de un Contador público</li>
+                        </ul>
                     </div>
-
-                    <h3>Revisor Fiscal</h3>
-                    <div class="organ-description">
-                        <div class="icon-container">
-                            <i class="fas fa-balance-scale"></i>
-                        </div>
-                        <div class="content">
-                            <p>Responsable de la <strong>inspección y vigilancia interna</strong> del Fondo de Empleados.</p>
-                            <p>Requisitos:</p>
-                            <ul>
-                                <li>Contador público con matrícula vigente</li>
-                                <li>No puede ser asociado del Fondo de Empleados</li>
-                                <li>Puede ser persona jurídica bajo la responsabilidad de un Contador público</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2025 Fedintep - Todos los derechos reservados</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+                </div>
+            </section>
+        </div>
+    </section>
+</div>

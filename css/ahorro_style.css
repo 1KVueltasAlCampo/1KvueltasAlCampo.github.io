@@ -107,9 +107,15 @@ body {
     align-items: flex-start;
 }
 
+/* FIX CÍRCULOS PERFECTOS: Ícono pequeño de lista */
 .modalidad-icon-small {
+    /* Dimensiones rígidas para evitar óvalos */
     flex: 0 0 60px;
+    width: 60px;
     height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    
     background-color: #004080;
     color: white;
     display: flex;
@@ -177,12 +183,18 @@ body {
     transform: translateY(-5px);
 }
 
+/* FIX CÍRCULOS PERFECTOS: Ícono de beneficios */
 .beneficio-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    
+    /* Dimensiones rígidas */
     width: 70px;
     height: 70px;
+    min-width: 70px;
+    min-height: 70px;
+    
     background-color: #e4f0fa;
     color: #004080;
     border-radius: 50%;

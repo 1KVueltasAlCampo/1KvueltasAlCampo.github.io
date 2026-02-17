@@ -62,7 +62,7 @@ document.addEventListener("pageLoaded", function (e) {
         const data = JSON.parse(storedData);
         
         // Inyectar datos en el DOM
-        document.getElementById("titulo").textContent = `Estado de cuenta al ${new Date().toLocaleDateString()}`; // O la fecha que venga del back
+        document.getElementById("titulo").textContent = `Estado de cuenta para ${data.nombre || 'Asociado'}`; // O la fecha que venga del back
         document.getElementById("mensaje").textContent = data.mensaje || `Bienvenido, ${data.nombre || 'Asociado'}`;
         document.getElementById("totalAhorros").textContent = data.totalAhorros;
         document.getElementById("totalCreditos").textContent = data.totalCreditos;

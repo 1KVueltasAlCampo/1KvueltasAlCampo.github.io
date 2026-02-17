@@ -1,7 +1,6 @@
 document.addEventListener("pageLoaded", function (e) {
     const page = e.detail;
 
-    // --- LÓGICA PARA LA PÁGINA DE LOGIN (cuenta) ---
     if (page === "cuenta") {
         const loginForm = document.getElementById("loginForm");
         
@@ -20,6 +19,7 @@ document.addEventListener("pageLoaded", function (e) {
                     
                     // URL de la API (Considerar mover a un archivo config.js en el futuro)
                     const url = "https://1-kvueltas-al-campo-github-io-u1xs.vercel.app/login";
+                    //const url = "http://localhost:3000/login";
 
                     const response = await fetch(url, { 
                         method: "POST",
